@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Fence</title>
+    <link rel="icon" href="image_processing20200508-28885-mw1csq.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <style>
+    .password-container {
+        position: relative;
+    }
+
+    #password {
+        padding-right: 30px; /* Make room for the show/hide button */
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        line-height: 1; /* Adjust line height for better alignment */
+    }
+</style>
+
+
+<div class="container" onclick="toggleAnimation()">
+    <div class="top"></div>
+    <div class="background-image"></div>
+    <div class="center">
+        <h1>Customer Login</h1>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+      
+        <div class="password-container">
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <span class="toggle-password" onclick="togglePasswordVisibility()">🔑</span>
+        </div>
+      
+        <button type="submit" onclick="login()">Login</button>
+        <div class="forgot-password">
+            <a href="https://moo.mohanrajs7.repl.co/">Forgot Password?</a>
+        </div>
+        <div class="bottom-text">
+            Don't have an account? <a href="https://mohan-raj--mohanrajs7.repl.co/">Sign Up</a>
+        </div>
+    </div>
+    <div class="bottom"></div>
+</div>
+
+<script>
+    function toggleAnimation() {
+        // Your animation logic goes here
+    }
+
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var toggleButton = document.querySelector(".toggle-password");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleButton.textContent = "🔓";
+        } else {
+            passwordInput.type = "password";
+            toggleButton.textContent = "🔑";
+        }
+    }
+
+    function login() {
+        // Your login logic goes here
+        
+        // After successful login, redirect to another webpage
+        window.location.href = "https://homepage.mohanrajs7.repl.co/";
+    }
+</script>
+
+</body>
+</html>
