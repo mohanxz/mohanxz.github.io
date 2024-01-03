@@ -1,6 +1,6 @@
 @font-face {
-    font-family: digital-7;
-    src: url("digital-7.ttf");
+    font-family:digital-7 ;
+    src: url("digital-7/digital-7.ttf");
 }
 
 * {
@@ -53,10 +53,11 @@ h2 {
 
 .clock {
     font-family: digital-7;
-    font-size: 80px;
+    font-size: 100px;
     color: var(--text-color);
     text-shadow: 0 0 20px var(--primary-color);
     position: fixed;
+    font-family: digital-7;
 }
 
 .clock::before {
