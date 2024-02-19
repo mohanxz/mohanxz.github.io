@@ -1,0 +1,62 @@
+*{
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.analogclock{
+    background-image: url("pngaaa.com-5507261.png");
+    width: 500px;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    
+}
+
+.needle{
+    --rotation:0;
+    position: absolute;
+    background-color: black;
+    bottom: 53%;
+    left: 50%;
+    border: 1px solid burlywood;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    transform-origin:bottom ;
+    transform: translate(-50%) rotate(calc(var(--rotation)*1deg));
+
+}
+.sec{
+    background-color: rgb(97, 6, 6);
+    width: 3px;
+    height: 40%;
+}
+.hrs{
+    background-image:url(min.antique.png) ;
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 30%;
+    background-size:cover ;
+}
+
+.min{
+    background-image:url(min.antique.png) ;
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 46%;
+    background-size:cover ;
+}

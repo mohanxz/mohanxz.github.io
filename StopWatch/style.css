@@ -1,0 +1,52 @@
+
+.box {
+    padding-top: 220px;
+    text-align: center;
+  
+}
+
+body {
+    background-color: black;
+}
+
+.frame {
+    color: white;
+    font-size: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background: none;
+    border: 3px solid #80b3ff;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    font-size: 1em;
+    margin: 1em auto;
+    padding: 1em 3em;
+    text-transform: uppercase;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    position: relative; 
+}
+
+button::after {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 0;
+    background: #3385ff;
+    content: '';
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s;
+}
+
+button:hover:after {
+    width: 100%;
+}
