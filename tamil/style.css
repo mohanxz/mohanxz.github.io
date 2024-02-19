@@ -1,0 +1,110 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    background-image: url(moon-mountains-5760x3240-11338\ \(1\).jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    top: 100px;
+    left: 20px;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    top: -19px;
+    position: sticky;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-right: 20px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+li {
+    transition: 0.4s;
+    font-size:30px;
+    list-style-type: none;
+   list-style: none;
+   a:link { text-decoration: none; }
+   color: black;
+   
+
+}
+
+li:hover {
+    color: rgb(255, 255, 255);
+    transform: scale(1.1);
+    text-shadow: none;
+    cursor: pointer;
+    padding-bottom: -100px;
+    border-bottom: 2px solid rgb(255, 0, 0);
+}
+
+.header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 220px;
+}
+
+.main {
+    font-size: 35px;
+    padding: 5px;
+    
+  font-weight: 300;
+  font-style: normal;
+}
+
+.about {
+    font-size: 30px;
+    padding: 10px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.emer {
+    margin-top: 30px;
+    padding: 10px;
+    background-color: rgb(131, 0, 0);
+    height: 50px;
+    width: 200px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 7px;
+    transition: 1s;
+    color: aliceblue;
+    font-size: 20px;
+    padding: 10px;
+    position: absolute;
+    left: 650px;
+}
+
+.emer:hover {
+    color: white;
+    padding:10px;
+    background-color: rgb(171, 3, 3);
+    transform: scale(1.1);
+}
