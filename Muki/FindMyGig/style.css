@@ -1,0 +1,551 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;1,100&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* font-family: 'Poppins', sans-serif; */
+}
+body{
+  font-family: sans-serif;
+
+}
+.commented-section{
+  background-color: rgb(178, 178, 178);
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  width: 100%;
+  height: 4.80rem;
+  background-color: rgb(47, 36, 103);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo {
+  width: 15%;
+  /* background-color: yellow; */
+  height: 3rem;
+  /* margin-top: 1rem;
+    margin-left: 1rem; */
+  color: white;
+  font-size: 1.30rem;
+}
+
+.searchbox {
+  width: 45%;
+  height: 3rem;
+  /* background-color: seagreen; */
+}
+/* Define base styles for the search box */
+.pinksearchbox {
+  background-color: rgb(217, 58, 136);
+  color: white;
+  position: relative;
+  padding: .60rem 1rem;
+  margin-left: 13.60rem;
+  left: -40px;
+  border: white solid 2px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  transition: all 0.3s ease;
+  animation-name: movs;
+  animation-duration: 2s;
+  animation-fill-mode: forwards; /* Add transition for smooth animation */
+}
+
+/* Define hover styles for the search box */
+.pinksearchbox:hover {
+ 
+  background-color: #2a90e3; /* Change background color on hover */
+  transform: translateX(-5px);
+  border: #ffffff solid 2px;
+  border-left:none; /* Move the button slightly to the left on hover */
+}
+
+/* Define styles for the search box when clicked */
+.pinksearchbox:active {
+  transform: translateY(1px); /* Push the button slightly down when clicked */
+}
+
+/* Define additional search box with different positioning */
+.pinksearchbox1 {
+  background-color: rgb(217, 58, 136);
+  color: white;
+  position: relative;
+  border: white solid 2px;
+  padding: .60rem 1rem;
+  margin-left: 13.60rem;
+  left: -110px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  transition: all 0.4s ease;
+  animation-name: movs;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  
+}
+@keyframes movs{
+  from{
+    left: -420px;
+  }
+  to{
+    
+  }
+}
+
+/* Define hover styles for the second search box */
+.pinksearchbox1:hover {
+  background-color: #2a90e3; /* Change background color on hover */
+  transform: translateX(-5px);
+  border: #ffffff solid 2px;
+  border-left:none; /* Move the button slightly to the left on hover */
+}
+
+/* Define styles for the second search box when clicked */
+.pinksearchbox1:active {
+  transform: translateY(1px); /* Push the button slightly down when clicked */
+}
+
+
+.searchbox {
+  position: relative;
+  display: inline-block;
+  margin-left: 1.5rem;
+}
+
+.searchbox input:focus {
+  outline: none;
+  /*by default,input shows an outline on focus */
+}
+
+.searchbox input {
+  z-index: 0;
+  margin-top: 2%;
+  width: 210%;
+  height: 40px;
+  background: #373737;
+  border-radius: 25px;
+  border: cornsilk solid 2px;
+  color: rgb(255, 255, 255);
+}
+
+form {
+  display: inline-block;
+}
+
+#closeid {
+  display: none;
+}
+
+.fa-search {
+  position: absolute;
+  top: 40%;
+  left: 450px;
+  color: #8e99a4;
+}
+
+.close {
+  position: absolute;
+  top: 50%;
+  right: -160%;
+  color: #8e99a4;
+  border: none;
+  padding: 0;
+}
+
+.search {
+  color: #8e99a4;
+  font-weight: 400;
+  padding-left: 50px;
+  font-size: 18px;
+  z-index: 3;
+}
+
+.fa-times {
+  position: absolute;
+  top: 30%;
+  right: 5%;
+}
+
+.otherlink {
+  width: 34%;
+  height: 3rem;
+  /* background-color:rosybrown; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.otherlink a {
+  color: white;
+  position: relative;
+}
+
+.postbutton {
+  padding: .44rem 1.50rem;
+  /* padding-left:.40rem ;
+    padding-right:.40rem  ; */
+  /* background-color: pink; */
+  border: 1px solid blue;
+  border-radius: 15px;
+}
+
+.dropdown {
+  position: relative;
+  /* display: inline-block; */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  /* background-color: red; */
+  margin-top: 18rem;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropbtn {
+  color: white;
+}
+
+.dropdown-content a:hover {
+  background-color: #424141;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {}
+
+/* headerdownlist start */
+
+.headerdownlist {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.headerdownlist a {
+  color: black;
+  font-size: .88rem;
+}
+
+.headerdownlist i {
+  display: inline-block;
+  padding: 1rem;
+  font-size: .50rem;
+}
+
+/* click applay section */
+
+.clickapply p{
+  width: 80%;
+  height: 3.60rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  position: relative;
+  top: 50px;
+  /* background-color: red; */
+}
+
+.clickapply a {
+  color: white;
+  background-color: rgb(214, 50, 131);
+  padding: .40rem .90rem;
+  font-size: .60rem;
+}
+
+.clickapply p {
+  color: rgb(107, 167, 98);
+  padding: .40rem;
+}
+
+/* sorter and packer section start */
+
+.sorter {
+  width: 80%;
+  height: 4rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sorter a {
+  color: white;
+  padding: 1rem 2.40rem;
+  background-color: rgb(66, 86, 206);
+  border-radius: 20px;
+}
+
+/* magic cration section start */
+
+.magiccration {
+  width: 80%;
+  height: 13rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  /* background-color: red; */
+  display: flex;
+}
+
+.imgmagiccration {
+  width: 15%;
+  /* background-color: yellow; */
+}
+
+.imgmagiccration img {
+  margin-top: 1rem;
+}
+
+.magiccrationinfo {}
+
+.magiccrationinfo i {
+  display: inline-block;
+  padding: .35rem;
+}
+
+/* jobdescription section start */
+
+.jobdescription {
+  width: 80%;
+  height: 10rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  /* background-color: yellow; */
+}
+
+.jobdescription h2 {
+  padding: 1rem;
+  
+}
+
+.jobdescription p {
+  padding: 1rem;
+}
+
+.jobdescription a {
+  padding: 1rem;
+  font-size: .70rem;
+}
+
+/* suggestion section start */
+
+.suggestion {
+  width: 80%;
+  height: 6rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  /* background-color: yellow; */
+}
+
+.suggestion h2 {
+  padding: 1rem;
+}
+
+.suggestion a {
+  background-color: rgb(233, 233, 234);
+  padding: .20rem 1rem;
+  border-radius: 15px;
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
+/* footer style start */
+
+footer {
+  width: 100%;
+  height: 25rem;
+  background-color: rgb(42, 35, 100);
+  color: white;
+}
+
+footer h2 {
+  text-align: center;
+}
+
+.footerlink {
+  width: 40%;
+  height: 20rem;
+  /* background-color: red; */
+  margin-top: 2%;
+  margin-left: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerlink ul {
+  list-style: none;
+}
+
+.footerlink a {
+  color: white;
+  display: inline-block;
+  padding: .40rem;
+}
+
+.footerlink p {
+  font-size: 1.40rem;
+  padding: 1rem;
+}
+
+.colorfooterlink {
+  color: rgb(230, 62, 158);
+}
+
+/* footerlinkicon style start */
+.container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.comment-top {
+  padding: 10px 20px;
+}
+
+.coment-bottom {
+  padding: 10px 20px;
+}
+
+.searchbox {
+  position: relative;
+}
+
+.search {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search:focus {
+  outline: none;
+}
+
+i.fas.fa-search {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+
+button.close {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.commented-section {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.commented-user {
+  margin-bottom: 5px;
+}
+
+.dot {
+  height: 6px;
+  width: 6px;
+  background-color: #aaa;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom: -1px;
+}
+
+.comment-text-sm {
+  margin-bottom: 10px;
+}
+
+.voting-icons {
+  align-items: center;
+}
+
+.fa.fa-sort-up,
+.fa.fa-sort-down {
+  cursor: pointer;
+  color: #aaa;
+}
+
+.ml-2 {
+  margin-left: 10px;
+}
+
+.ml-2,
+.mr-2 {
+  margin-right: 10px;
+}
+
+
+.footerlinkicons {
+  text-align: center;
+  background-color: rgb(42, 35, 100);
+}
+
+.footerlinkicons i {
+  display: inline-block;
+  padding: 1rem;
+  color: white;
+}
+
+.footeralink a {
+  color: white;
+  display: inline-block;
+  padding: 1.60rem;
+  font-size: .70rem;
+}
+
+.bdge {
+height: 21px;
+background-color: orange;
+color: #fff;
+font-size: 11px;
+padding: 8px;
+border-radius: 4px;
+line-height: 3px;
+}
+
+.comments {
+text-decoration: underline;
+text-underline-position: under;
+cursor: pointer;
+}
+
+.dot {
+height: 7px;
+width: 7px;
+margin-top: 3px;
+background-color: #bbb;
+border-radius: 50%;
+display: inline-block;
+}
+
+.hit-voting:hover {
+color: blue;
+}
+
+.hit-voting {
+cursor: pointer;
+}
+input::placeholder{
+  color: rgb(187, 187, 187);
+}

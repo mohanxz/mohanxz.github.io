@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FindMyGigjob</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="Icon" href="img/icon.webp">
+        <script src="https://kit.fontawesome.com/ebfafc2eb8.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <h1>
+                    FindMyGig
+                </h1>
+            </div>
+            <div class="searchbox">
+                <div class="searchbox animated zoomIn">
+                    <form method="get">
+                        <input
+                            oninput="triggercross(this.value)"
+                            type="text"
+                            placeholder="  Enter Your Location . . ."
+                            id="search"
+                            name="search"
+                            class="search"
+                        >
+                        <i class="fas fa-search"></i>
+                        <button
+                            onclick="close1()"
+                            id="closeid"
+                            type="reset"
+                            class="close"
+                        >
+                            <i class="fas fa-times"></i>
+                            <p id="demo"></p>
+                        </button>
+                    </form>
+                </div>
+                <a href="" class="pinksearchbox1">search</a>
+            </div>
+            <div class="otherlink dropdown">
+                <a href="" class="dropbtn">
+                    Job Seekers
+                </a>
+                <div class="dropdown-content">
+                    <a href="#">Find Job</a>
+                    <a href="#">Find Shifts</a>
+                    <a href="#">Tip For Landing Job</a>
+                    <a href="#">Refer Friends, Get Paid!</a>
+                    <a href="#">Coronavirus Response</a>
+                    <a href="#">contact Us</a>
+                </div>
+                <a href="" class="dropbtn">
+                    Empoyers
+                </a>
+                <a href="" class="postbutton">
+                    Post My Job
+                </a>
+                <a href="" class="dropbtn ">
+                    Sign In
+                </a>
+            </div>
+        </header>
+        <section class="headerdownlist">
+            <a href="">Salem
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href=""> Mckeesport
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="">Full-time
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="">Warehouse & Production
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="">Sorter
+                <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="">Magic Creations</a>
+        </section>
+        <!-- click apply section -->
+        <section class="clickapply">
+            <a href="">1-CLICK APPLY</a>
+        </section>
+                        
+                    <div class="coment-bottom bg-white p-2 px-4">
+                        <div class="searchbox">
+                            <div class="searchbox animated zoomIn">
+                                <form method="get">
+                                    <input
+                                        oninput="triggercross(this.value)"
+                                        type="text"
+                                        placeholder="  Post your problems...."
+                                        id="search"
+                                        name="search"
+                                        class="search">
+                                    <button
+                                        onclick="close1()"
+                                        id="closeid"
+                                        type="reset"
+                                        class="close">
+
+                                        <p id="demo"></p>
+                                    </button>
+                                </form>
+                            </div>
+                            <a href="" class="pinksearchbox">Post</a>
+                        </div>
+                        <div class="commented-section mt-2">
+                            <div class="d-flex flex-row align-items-center commented-user">
+                                <h5 class="mr-2">MR.Sekar's complex'</h5>
+                                <span class="dot mb-1"></span>
+                                <span class="mb-1 ml-2">4 hours ago</span>
+                            </div>
+                            <div class="comment-text-sm">
+                                <span>2 members are required for a physical work for attending customers  .</span><br>
+                                <span> Date : 28.03.2024 
+                                </span>
+                            <br>
+                            <span>Time:7:00 PM - 09:00 PM</span><br>
+                            <span>Paid : 400rs/hr</span>
+                            </div>
+                            <div class="reply-section">
+                                <div class="d-flex flex-row align-items-center voting-icons">
+                                    <i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i>
+                                    <i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i>
+                                    <span class="ml-2">10</span>
+                                    <span class="dot ml-2"></span>
+                                    <h6 class="ml-2 mt-1">Reply</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commented-section mt-2">
+                            <div class="d-flex flex-row align-items-center commented-user">
+                                <h5 class="mr-2">Mukilan</h5>
+                                <span class="dot mb-1"></span>
+                                <span class="mb-1 ml-2">5 hours ago</span>
+                            </div>
+                            <div class="comment-text-sm">
+                                <span>5 members are required for a physical work for attending customers  .</span><br>
+                                <span> Date : 25.03.2024 
+                                </span>
+                            <br>
+                            <span>Time:08:00 PM - 06:00 PM</span><br>
+                            <span>Paid : 700rs/hr</span>
+                            </div>
+                            <div class="reply-section">
+                                <div class="d-flex flex-row align-items-center voting-icons">
+                                    <i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i>
+                                    <i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i>
+                                    <span class="ml-2">10</span>
+                                    <span class="dot ml-2"></span>
+                                    <h6 class="ml-2 mt-1">Reply</h6>
+                                </div>
+                            </div>
+                        </div> <div class="commented-section mt-2">
+                            <div class="d-flex flex-row align-items-center commented-user">
+                                <h5 class="mr-2">Iyangar Bakery
+                                <span class="dot mb-1"></span><br>
+                                <span class="mb-1 ml-2">4 hours ago</span>
+                            </div>
+                            <div class="comment-text-sm">
+                                <span>10 members are recquired for a physical work for attending customers  .</span><br>
+                                <span> Date : 28.04.2024 
+                                </span>
+                            <br>
+                            <span>Time:06:00 AM - 09:00 PM</span><br>
+                            <span>Paid : 250rs/hr</span>
+                            </div>
+                            <div class="reply-section">
+                                <div class="d-flex flex-row align-items-center voting-icons">
+                                    <i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i>
+                                    <i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i>
+                                    <span class="ml-2">10</span>
+                                    <span class="dot ml-2"></span>
+                                    <h6 class="ml-2 mt-1">Reply</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="commented-section mt-2">
+                            <div class="d-flex flex-row align-items-center commented-user">
+                                <h5 class="mr-2">Aparajitha apartments</h5>
+                                <span class="dot mb-1"></span>
+                                <span class="mb-1 ml-2">8 hours ago</span>
+                            </div>
+                            <div class="comment-text-sm">
+                                <span>A one day watchman is required for attending and safeguarding tenants and rentals</span><br>
+                                <span> Date : 25.03.2024 
+                                
+                            <br>
+                            <span>Time:6:00 AM - 12:00 PM</span><br>
+                            <span>Paid : 200rs/hr</span>
+                            </div>
+                            <div class="reply-section">
+                                <div class="d-flex flex-row align-items-center voting-icons">
+                                    <i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i>
+                                    <i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i>
+                                    <span class="ml-2">10</span>
+                                    <span class="dot ml-2"></span>
+                                    <h6 class="ml-2 mt-1">Reply</h6>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+                <!-- job description section start -->
+                <section class="jobdescription">
+                    <h2>Job Description</h2>
+                    <p>Sorting and packing FULL TIME positions available. Applicant must be able to work Monday through Friday 8am til 4:30pm. Job is located in Mckeesport/White Oak area. Earn up to $10.25/hour to start. Bonus money available after 2 weeks. Call 412-672-2300 to schedule and interview</p>
+                    <a href="">Posting ID: 567552795</a>
+                    <a href="">Posted: 2020-08-19</a>
+                </section>
+                <!-- Suggested searches section start -->
+                <section class="suggestion">
+                    <h2>Suggested searches</h2>
+                    <a href="">Full-time jobs</a>
+                    <a href="">packer job</a>
+                </section>
+                <footer>
+                    <h2>FindMyGigjob</h2>
+                    <div class="footerlink">
+                        <ul>
+                            <p>Job Seekers</p>
+                            <li>
+                                <a href="">Coronavirus Response</a>
+                            </li>
+                            <li>
+                                <a href="">Security</a>
+                            </li>
+                            <li>
+                                <a href="">Local Jobs</a>
+                            </li>
+                            <li>
+                                <a href="">Browse jobs</a>
+                            </li>
+                            <li>
+                                <a href="">Tip For Landing Job</a>
+                            </li>
+                            <li>
+                                <a href="">Help & FAQ</a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <span class="colorfooterlink">Refer friends,get paid
+                                    </a>
+                                </span>
+                            </li>
+                            <li>
+                                <a href="">Contact Us</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <p>Employers</p>
+                            <li>
+                                <a href="">Post Jobs</a>
+                            </li>
+                            <li>
+                                <a href="">Post a Shift</a>
+                            </li>
+                            <li>
+                                <a href="">Why FindMyGigjob?</a>
+                            </li>
+                            <li>
+                                <a href="">Our Customers</a>
+                            </li>
+                            <li>
+                                <a href="">Our Products</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <p>About</p>
+                            <li>
+                                <a href="">Post Jobs</a>
+                            </li>
+                            <li>
+                                <a href=""> Careers</a>
+                            </li>
+                            <li>
+                                <a href=""> About FindMyGigjob</a>
+                            </li>
+                            <li>
+                                <a href=""> Giving Back</a>
+                            </li>
+                            <li>
+                                <a href="">News</a>
+                            </li>
+                        </ul>
+                    </div>
+                </footer>
+                <section class="footerlinkicons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                    <div class="appicon">
+                        <img src="img/badge-app-store.svg" alt="">
+                        <img src="img/badge-play-google.svg" alt="">
+                    </div>
+                    <div class="footeralink">
+                        <a href="">Legal Information</a>
+                        <a href="">Terms of Use</a>
+                        <a href="">Privacy Policy</a>
+                    </div>
+                </section>
+        
+                <script>
+                    // Function to retrieve comments from local storage and display them
+                    function displayComments() {
+                        var comments = JSON.parse(localStorage.getItem('comments')) || [];
+            
+                        var commentSection = document.getElementById('commentSection');
+                        commentSection.innerHTML = '';
+            
+                        comments.forEach(function(comment) {
+                            var commentElement = document.createElement('div');
+                            commentElement.classList.add('commented-section', 'mt-2');
+                            commentElement.innerHTML = `
+                                <div class="d-flex flex-row align-items-center commented-user">
+                                    <h5 class="mr-2">${comment.username}</h5>
+                                    <span class="dot mb-1"></span>
+                                    <span class="mb-1 ml-2">${comment.timestamp}</span>
+                                </div>
+                                <div class="comment-text-sm">
+                                    <span>${comment.text}</span>
+                                </div>
+                                <div class="reply-section">
+                                    <div class="d-flex flex-row align-items-center voting-icons">
+                                        <i class="fa fa-sort-up fa-2x mt-3 hit-voting"></i>
+                                        <i class="fa fa-sort-down fa-2x mb-3 hit-voting"></i>
+                                        <span class="ml-2">${comment.likes}</span>
+                                        <span class="dot ml-2"></span>
+                                        <h6 class="ml-2 mt-1">Reply</h6>
+                                    </div>
+                                </div>
+                            `;
+                            commentSection.appendChild(commentElement);
+                        });
+                    }
+            
+                    // Function to handle form submission
+                    document.getElementById('commentForm').addEventListener('submit', function(event) {
+                        event.preventDefault();
+            
+                        var commentInput = document.getElementById('commentInput').value;
+                        var timestamp = new Date().toLocaleString();
+            
+                        var newComment = {
+                            username: 'User', // You can modify this to take user input or implement user authentication
+                            timestamp: timestamp,
+                            text: commentInput,
+                            likes: 0
+                        };
+            
+                        var comments = JSON.parse(localStorage.getItem('comments')) || [];
+                        comments.push(newComment);
+                        localStorage.setItem('comments', JSON.stringify(comments));
+            
+                        displayComments();
+            
+                        document.getElementById('commentInput').value = '';
+                    });
+            
+                    // Initial call to display comments when the page loads
+                    displayComments();
+                </script>
+            </body>
+        </html>
