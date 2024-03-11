@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emostant</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="/images/emo.png"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -25,19 +26,34 @@
           <span class="button">Change Image</span>
         </label>
         <input id="file" type="file" onchange="loadFile(event)"/>
-        <img src="/images/profile.jpeg" id="output" width="200" />
+        <img src="" id="output" width="200" />
       </div>
       <div class="bio">
-        <p class="name">Guna Sri</p>
+        <p class="name">Gunasree</p>
         <p class="about">Things to be passed over in silence</p>
       </div>
     </div>
   </div>
   
   <script>
-    var loadFile = function (event) {
+
+    // Function to load the profile image
+    var loadFile = function(event) {
       var image = document.getElementById("output");
-      image.src = URL.createObjectURL(event.target.files[0]);
+      var imageUrl = URL.createObjectURL(event.target.files[0]);
+      image.src = imageUrl;
+      
+      // Save the image URL to local storage
+      localStorage.setItem("profileImage", imageUrl);
+    };                                                
+
+    // Function to check if the profile image exists in local storage and load it
+    window.onload = function() {
+      var profileImage = localStorage.getItem("profileImage");
+      if (profileImage) {
+        var image = document.getElementById("output");
+        image.src = profileImage;
+      }
     };
   </script>
 </body>
