@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Gig Radius</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            margin: 5px 0;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .alert {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .success {
+            background-color: #4caf50;
+        }
+
+        .info {
+            background-color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gig Seeker Application</h1>
+    <p>Enter your username:</p>
+    <input type="text" id="usernameInput" placeholder="Username">
+    <button onclick="storeUserLocation()">Save My Location</button>
+    <button onclick="notifyIfWithinRadius()">Notify if within 10 km radius</button>
+
+    <script>
+          function storeUserLocation() {
+            var usernameInput = document.getElementById("usernameInput");
+            var username = usernameInput.value;
+            if (!username) {
+                alert("Please enter a username.");
+                return;
+            }
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var userLatitude = position.coords.latitude;
+                    var userLongitude = position.coords.longitude;
+                    var userLocation = {
+                        username: username,
+                        latitude: userLatitude,
+                        longitude: userLongitude
+                    };
+                    localStorage.setItem('userLocation', JSON.stringify(userLocation));
+                    alert("Location saved successfully!");
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function notifyIfWithinRadius() {
+            var currentUserLocation = JSON.parse(localStorage.getItem('userLocation'));
+            if (!currentUserLocation) {
+                alert("User location must be saved first.");
+                return;
+            }
+
+            var currentUserLatitude = currentUserLocation.latitude;
+            var currentUserLongitude = currentUserLocation.longitude;
+            var currentUserUsername = currentUserLocation.username;
+
+            var radius = 10; // Radius in km
+
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key !== 'userLocation') {
+                    var storedUserLocation = JSON.parse(localStorage.getItem(key));
+                    var storedUserLatitude = storedUserLocation.latitude;
+                    var storedUserLongitude = storedUserLocation.longitude;
+                    var storedUserUsername = storedUserLocation.username;
+
+                    var distance = getDistanceFromLatLonInKm(currentUserLatitude, currentUserLongitude, storedUserLatitude, storedUserLongitude);
+
+                    if (distance <= radius && storedUserUsername !== currentUserUsername) {
+                        alert(currentUserUsername + " is within the 10 km radius of " + storedUserUsername);
+                        // Code to notify the users
+                    }
+                }
+            }
+        }
+
+        // Function to calculate the distance between two points given their latitude and longitude
+        function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+            var R = 6371; // Radius of the earth in km
+            var dLat = deg2rad(lat2 - lat1); // deg2rad below
+            var dLon = deg2rad(lon2 - lon1);
+            var a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var d = R * c; // Distance in km
+            return d;
+        }
+
+        function deg2rad(deg) {
+            return deg * (Math.PI / 180);
+        }
+    </script>
+</body>
+</html>
