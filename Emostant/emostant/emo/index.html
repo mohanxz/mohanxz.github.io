@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emostant chat app</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="emo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #000080; /* Dark blue */
+      color: #ffff00; /* Yellow */
+    }
+    
+    /* Light mode styles */
+    body.light-mode {
+      background-color: #87ceeb; /* Sky blue */
+      color: #000; /* Black */
+    }
+    
+    /* Toggle button styles */
+    .toggle-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 30px;
+      background-color: #ccc;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+    
+    .toggle-btn .toggle-circle {
+      width: 25px;
+      height: 25px;
+      background-color: #fff;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+    
+    /* Styles for dark mode */
+    body.dark-mode .toggle-btn {
+      background-color: #555;
+    }
+    
+    body.dark-mode .toggle-btn .toggle-circle {
+      transform: translateX(30px);
+    }
+  </style>
+</head>
+<body class="light-mode">
+    <div class="title"><h1>Emostant</h1></div>
+
+  <!-- Main container -->
+  <div class="container">
+    <!-- msg-header section starts -->
+    <div class="msg-header">
+      <div class="container1">
+        <img src="user1.png" class="msgimg" />
+        <div class="active">
+          <p>User name</p>
+        </div>
+      </div>
+    </div>
+    <!-- msg-header section ends -->
+
+    <!-- Chat inbox  -->
+    <div class="chat-page">
+      <div class="msg-inbox">
+        <div class="chats">
+          <!-- Message container -->
+          <div class="msg-page">
+            <!-- Incoming and outgoing messages -->
+            <!-- Example incoming and outgoing messages -->
+            <div class="received-chats">
+              <div class="received-chats-img">
+                <img src="user2.png" />
+              </div>
+              <div class="received-msg">
+                <div class="received-msg-inbox">
+                  <p>
+                    additionally on our app we are going to give what kind of emotion is that… for each chat each clr….with the help of keyword!!.<br><br>make it fast guys
+                  </p>
+                  <span class="time">18:06 PM | July 24</span>
+                </div>
+              </div>
+            </div>
+            <div class="outgoing-chats">
+              <div class="outgoing-chats-img">
+                <img src="user1.png" />
+              </div>
+              <div class="outgoing-msg">
+                <div class="outgoing-chats-msg">
+                  <p>
+                    Naalaila irrundhu work start pannunga if possible tonight
+                    chhat interfacee ku give some theme
+                  </p>
+                  <span class="time">18:30 PM | July 24</span>
+                </div>
+              </div>
+            </div>
+            <div class="outgoing-chats">
+                <div class="outgoing-chats-img">
+                  <img src="user1.png" />
+                </div>
+                <div class="outgoing-msg">
+                  <div class="outgoing-chats-msg">
+                    <p>
+                        Ensure that the new member wants to have a basic knowledge on Frontend development and backend development
+                    </p>
+                    <span class="time">18:30 PM | July 24</span>
+                  </div>
+                </div>
+              </div>
+            <!-- End of example messages -->
+          </div>
+        </div>
+
+        <!-- msg-bottom section -->
+        <div class="msg-bottom">
+          <div class="input-group">
+            <input
+              id="message-input"
+              type="text"
+              class="form-control"
+              placeholder="Type Here..."
+            />
+            <span class="input-group-text send-icon" onclick="sendMessage()">
+              <i class="bi bi-send"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to toggle between dark and light mode
+    function toggleMode() {
+      // Toggle the 'dark-mode' class on the body
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Function to send a message
+    function sendMessage() {
+      var inputElement = document.getElementById("message-input");
+      var message = inputElement.value.trim();
+      if (message !== "") {
+        // Append the outgoing message to the chat container
+        var chatPage = document.querySelector(".msg-page");
+        var outgoingChat = document.createElement("div");
+        outgoingChat.classList.add("outgoing-chats");
+        outgoingChat.innerHTML = `
+          <div class="outgoing-chats-img">
+            <img src="user1.png" />
+          </div>
+          <div class="outgoing-msg">
+            <div class="outgoing-chats-msg">
+              <p>${message}</p>
+              <span class="time">${getCurrentTime()}</span>
+            </div>
+          </div>
+        `;
+        chatPage.appendChild(outgoingChat);
+
+        // Save the message in local storage
+        saveMessage(message);
+
+        // Clear the input field after sending the message
+        inputElement.value = "";
+
+        // Scroll to the bottom of the chat container
+        chatPage.scrollTop = chatPage.scrollHeight;
+      }
+    }
+
+    // Function to get the current time in format HH:MM AM/PM | Month Day
+    function getCurrentTime() {
+      var now = new Date();
+      var hours = now.getHours() % 12 || 12;
+      var minutes = ("0" + now.getMinutes()).slice(-2);
+      var ampm = now.getHours() >= 12 ? "PM" : "AM";
+      var monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      var month = monthNames[now.getMonth()];
+      var day = now.getDate();
+      return `${hours}:${minutes} ${ampm} | ${month} ${day}`;
+    }
+
+    // Function to save message in local storage
+    function saveMessage(message) {
+      // Get existing messages from local storage or initialize an empty array
+      var messages = JSON.parse(localStorage.getItem("messages")) || [];
+
+      // Add the new message to the array
+      messages.push({
+        message: message,
+        time: getCurrentTime()
+      });
+
+      // Save the updated array back to local storage
+      localStorage.setItem("messages", JSON.stringify(messages));
+    }
+
+    // Add event listener to input field to send message on Enter key press
+    document.getElementById("message-input").addEventListener("keydown", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault(); // Prevent default Enter key behavior (e.g., new line)
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>
