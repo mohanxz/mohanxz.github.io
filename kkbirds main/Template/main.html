@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Add Product</h1>
+    <form id="addProductForm">
+        <input type="text" name="name" placeholder="Product Name" required><br>
+        <input type="number" name="price" placeholder="Price" required><br>
+        <label><input type="checkbox" name="availability"> Available</label><br>
+        <button type="submit">Add Product</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addProductForm = document.getElementById('addProductForm');
+            addProductForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(addProductForm);
+                const newProduct = {};
+                formData.forEach((value, key) => {
+                    newProduct[key] = value;
+                });
+
+                // Retrieve existing products from local storage or initialize an empty array
+                const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
+
+                // Add the new product to the array
+                existingProducts.push(newProduct);
+
+                // Store the updated products array back into local storage
+                localStorage.setItem('products', JSON.stringify(existingProducts));
+
+                alert('Product added successfully!');
+                addProductForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>
