@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Notes</title>
+    <link rel="icon" href="—Pngtree—color paper notes_712590.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>Double Tap The Sticky To Remove</h3>
+    <div id="box">
+    
+    </div>
+    <div id="container">
+        <button class="add-btn">+</button>
+    </div>
+    <script>
+        const containerElement=document.getElementById('container');
+        const addbtn=document.querySelector('.add-btn')
+
+        function getAppStorage(){
+            return JSON.parse(localStorage.getItem("moos-app") || "[]");}
+            
+        getAppStorage().forEach(element => {
+            const textElement= createTextElement(element.id,element.content);
+            containerElement.insertBefore(textElement,addbtn);
+        });
+        function createTextElement(id,content){
+            const textElement=document.createElement('textarea');
+            textElement.classList.add('sticky');
+            textElement.value=content;
+            textElement.id = id;
+            textElement.placeholder='Enter Your Notes';
+            textElement.addEventListener("input",()=>{
+                updatenotes(id,textElement.value);
+            })
+            textElement.addEventListener("dblclick",()=>{
+                const check=confirm("Are You Sure To Delete ?")
+                if(check){
+                    deleteNodes(id,textElement);
+                }
+            })
+            return textElement
+        }
+        function addSticky(){
+            const notes =getAppStorage();
+            const newsticky={
+                id:Math.floor(Math.random()*10000),
+                content:""
+            }
+            const textElement=createTextElement(newsticky.id,newsticky.content);
+           containerElement.insertBefore(textElement,addbtn)
+           notes.push(newsticky);
+           saveNotes(notes);
+
+        }
+        addbtn.addEventListener('click',()=>addSticky());
+        function saveNotes(notes){
+            localStorage.setItem("moos-app",JSON.stringify(notes))
+        }
+        function updatenotes(id,content){
+            const notes=getAppStorage();
+            const updateElement=notes.find((note)=>note.id==id);
+            if(updateElement){
+            updateElement.content=content;
+            saveNotes(notes);
+            }
+
+        }
+        function deleteNodes(id,content){
+            const notes=getAppStorage();
+            notes.filter((note)=>note.id!=id);
+            saveNotes(notes);
+            const textElement=document.getElementById(id)
+            if(textElement){
+            containerElement.removeChild(textElement)
+            }
+            
+
+        }
+
+    </script>
+</body>
+</html>
