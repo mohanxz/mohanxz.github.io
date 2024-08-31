@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images (1).jpeg">
+</head>
+<body>
+    <h2>Digital Clock In JavaScript</h2>
+    <div class="frame">
+        <h1 class="clock" data-text="15 : 10 : 04 AM ">15 : 10 : 04 AM </h1>
+        <p class="date"></p>
+    </div>
+    <script>
+        const clock = document.querySelector(".clock");
+        const dateElement = document.querySelector(".date");
+
+        function runClock() {
+            const time = new Date();
+            let hours = time.getHours();
+            let minutes = time.getMinutes();
+            let seconds = time.getSeconds();
+            let txt = "AM";
+
+            if (hours > 12) {
+                hours = hours - 12;
+                txt = "PM";
+            } else if (hours === 0) {
+                hours = 12;
+                txt = "AM";
+            }
+            hours=hours<10?"0" + hours:hours;
+            minutes=minutes<10?"0" + minutes:minutes;
+            seconds=seconds<10?"0" + seconds:seconds;
+
+            clock.innerHTML = `${hours} : ${minutes} : ${seconds} ${txt}`;
+
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const day = days[time.getDay()];
+            const date = time.getDate();
+            const month = time.getMonth() + 1;
+            const year = time.getFullYear();
+
+            dateElement.innerHTML = `${day} ${date}/${month}/${year}`;
+        }
+
+        runClock();
+        setInterval(runClock, 1000);
+    </script>
+</body>
+</html>

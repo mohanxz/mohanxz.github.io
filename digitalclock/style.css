@@ -1,0 +1,86 @@
+@font-face {
+    font-family:digital-7 ;
+    src: url("digital-7/digital-7.ttf");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --primary-color: #4296cead;
+   
+    --text-color: #ecf0f1;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(rgba(0,0,0,0.5)),(rgba(0,0,0,0.5));
+    background-color: #181a1c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    gap: 50px;
+    font-family:digital-7;
+    
+}
+
+h2 {
+    color: var(--text-color);
+    text-shadow: 0 0 10px var(--primary-color);
+    font-size: 50px;
+    font-weight: 900;
+   margin-left: 60px;
+   
+}
+
+.frame {
+    width: 600px;
+    height: 300px;
+    padding: 10px;
+    line-height: 300px;
+    border: 50px solid var(--primary-color);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    font-size: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+    background-color: #000000;
+}
+
+.clock {
+    font-family: digital-7;
+    font-size: 100px;
+    color: var(--text-color);
+    text-shadow: 0 0 20px var(--primary-color);
+    position: fixed;
+    font-family: digital-7;
+}
+
+.clock::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--primary-color);
+    width: 100%;
+    height: 100%;
+    opacity: 0.01;
+    filter: blur(40px);
+}
+
+.date {
+    font-family: digital-7;
+    font-size: 40px;
+    color: var(--text-color);
+    text-shadow: 0 0 10px var(--primary-color);
+    margin-top: 250px;
+    margin-left: 300px;
+}
