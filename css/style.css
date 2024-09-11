@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-:root{
+
+
+:root {
+    --color-body: #ffffff;
+    --color-heading:#eef3db;
+
+    --color-base: #250633;
+    --color-base2: #000000;
+    --color-brand:#e0f780;
+    --color-brand2:#deff58;
+    --sidbar-width: 240px;
+    --font-base: "Bai Jamjuree", sans-serif;
+}
+
+
+/* :root{
     --color-body:#b6cbce;
     --color-heading:#eef3db;
     --color-base:#022f47;
@@ -8,7 +23,7 @@
     --color-brand2:#deff58;
     --sidbar-width:240px;
     --font-base:"Bai jamjuree";
-}
+} */
 
 
 body{
@@ -80,7 +95,7 @@ img{
 
 /*Navbar*/
 .navbar{
-    background: linear-gradient(rgba(3, 63, 71, 0.9),rgba(3, 63, 71, 0.9)),url(/images/sidebars.jpeg);
+    background: linear-gradient(rgba(13, 1, 14, 0.9),rgba(75, 7, 76, 0.9)),url(/images/sidebars.jpeg);
 
 }
 
@@ -160,6 +175,27 @@ img{
   }
 
 
+  @media (max-width:450px) {
+   .service{
+    width: 350px;
+    position: relative;
+    right: 70px;
+
+   }
+   .card-custom{
+    width: 350px;
+    position: relative;
+    right: 55px;
+
+   }
+   
+}
+
+  
+  
+
+  
+
 
 
 
@@ -168,8 +204,8 @@ img{
     .navbar{
         min-height: 100vh;
         width:var(--sidbar-width);
-        background: linear-gradient(rgba(3, 63, 71, 0.9),rgba(3, 63, 71, 0.9)),url(/images/sidebars.jpeg);
-        background-repeat: no-repeat;
+        background: linear-gradient(rgba(13, 1, 14, 0.9),rgba(26, 1, 26, 0.9)),url(/images/sidebars.jpeg);
++       background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
 
@@ -267,6 +303,7 @@ img{
 span{
     transition: all 0.4s;
 }
+
 
 
 
