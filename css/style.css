@@ -5,7 +5,7 @@
     --color-body: #ffffff;
     --color-heading:#eef3db;
 
-    --color-base: #250633;
+    --color-base: #13011a;
     --color-base2: #000000;
     --color-brand:#e0f780;
     --color-brand2:#deff58;
@@ -180,7 +180,6 @@ img{
     width: 350px;
     position: relative;
     right: 70px;
-
    }
    .card-custom{
     width: 350px;
