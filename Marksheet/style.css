@@ -1,0 +1,190 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.border{
+    background-color: rgb(255, 255, 255);
+    height: 955px;
+    width: 600px;
+    border:double 7px Black;
+    position: relative;
+    margin: 10px;
+    left: 30%;
+    top: -5px;
+    background: #e3f6f5;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+ }
+.logo{
+    width: 100px;
+    position: relative;
+    top: 10px;
+}
+.header1{
+    display: flex;
+}
+.top1 h3{
+    text-align: center;
+    font-weight: 800;
+    position: relative;
+    left: 50px;
+    top: 5px;
+}
+.top1 h5{
+    position: relative;
+
+}
+.profile{
+    width: 100px;
+    position: relative;
+    top: 5px;
+    left: 105px;
+    border: solid 1px black;
+}
+.line2{
+    display: flex;
+    justify-content: space-around;
+
+}
+.h4{
+    position: relative;
+    right:100px;
+}
+strong{
+    font-weight: 900;
+}
+.header1 h5{
+    position:relative;
+    top: 100px;
+    right: 110px;
+}
+table{
+    border-collapse: collapse;
+}
+th,tr,td{
+    border: solid 1px black;
+    padding: 5px;
+}
+
+th{
+text-align:left;
+width: 130px;
+    
+}
+.name{
+width: 42%;}
+#table4 th{
+    width: 500px;
+}
+.prelast{
+    height: 90px;
+    background: #aadcef;
+
+
+    color: rgb(48, 63, 100);
+    display: flex;
+    font-weight: 800;
+    justify-content: space-around;
+}
+.absent{
+    position: relative;
+    color: rgb(48, 63, 100);
+    font-weight: 800;
+    right: -56%;
+    top: -60px;
+
+}
+.seal{
+    width: 150px;
+    position: relative;
+    top: -100px;
+    left: 170px;
+    transform: rotate(-30deg);
+}
+.final{
+    position: relative;
+    top: -150px;
+}
+.sign{
+    position: relative;
+    left: 160px;
+    top: 26px;
+    font-size: small;
+    font-weight: 900;
+}
+.csign{
+    top: 10px;
+    position: relative;
+    left: 400px;
+    font-size: small;
+    font-weight: 900;
+}
+.table2 table tr{
+    border: none;
+}
+.table2 th{
+    text-align: center;
+}
+.table2 td{
+    border-right: solid 1px black;
+    border-left: solid 1px black;
+    border-top: none;
+    border-bottom: none;
+}
+table th{
+    color: rgb(14, 89, 97);
+    font-weight: 900;
+}
+table tr,th,td{
+    color: rgb(22, 86, 86);
+    font-weight: 500;
+}
+.table1 tr:nth-child(even){
+    background: #ffcab0;
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background-size: 10px 10px;
+    background-image: repeating-linear-gradient(45deg, #ffcab0 0,#ffcab0 1px, #e5e5f7 0, #ffcab0 50%); }
+.table1 th:nth-child(odd){
+	background: #e3f6f5; }
+.table2,.table3{
+    text-align: center;
+}
+.table3 th{
+    text-align: center;
+}
+.top1{
+    color: rgb(13, 13, 62);
+}
+.loc{
+    position: relative;
+    top: 10px;
+    font-size: small;
+    font-weight: 900;
+    left:3px;
+}
+.loc span{
+    color: black;
+    font-weight: 900;
+}
+.signature{
+    font-family: "Cedarville Cursive", cursive;
+    font-weight: 400;
+    font-style: normal;
+    position: relative;
+    top: -200px;
+    left: 430px;
+}
+
+@media screen  and  (max-width:576px) {
+    .border{
+        position: static;
+        overflow: hidden;
+        max-width: 470px;
+        margin-inline: 40px;
+    }
+}
