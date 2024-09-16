@@ -5,20 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hi,I am Mohan raj</title>
-  <link rel="icon" href="/images/js.png">
+  <link rel="icon" id="favicon">
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/aos.css">
   <link rel="stylesheet" href="/css/line-awesome.min.css">
   <link rel="stylesheet" href="/css/style.css">
+  
 </head>
 
-<body data-bs-spy="scroll" data-bs-target=".navbar">
-
+<body class="dark"  data-bs-spy="scroll" data-bs-target=".navbar">
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container flex-lg-column">
+    <div class="container flex-lg-column" >
       <a class="navbar-brand me-lg-auto" href="#">
         <span class="h3 fw-bolder d-block d-lg-none">Mohan Raj</span>
-        <img id="me" src="/images/pro.webp" alt="" class="rounded-circle d-none d-lg-block">
+        <img id="me" src="/images/mohan.jpg" alt="" class="me d-none d-lg-block">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,19 +51,22 @@
   <!--content wrapper-->
   <div id="content-wrapper">
     <!--Home-->
-    <section id="home" class="full-height bg-dark px-lg-5">
+    <section id="home" class="full-height px-lg-5">
+      <div id="toggle">
+        <i class="indicator"></i>
+      </div>
       <a class="btn btn-brand ms-auto" id="cv" href="/images/Mohan Raj S's CV.pdf" Download><i
           class="las la-download"></i>Download CV</a>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10">
-            <h1 class="display-4 fw-bold" data-aos="fade-up">I'M A <span class="text-brand">FRONTEND DEVELOPER</span>
+            <h1 class="gradient-text  display-4 fw-bold" data-aos="fade-up">I'M A <span class="text-brand">FRONTEND DEVELOPER</span>
             </h1>
-            <p class="lead mt-2 mb-4" data-aos="fade-up" data-aos-delay="300">Hi,I’m Mohan raj, And I turn
+            <p class="hi lead mt-2 mb-4" data-aos="fade-up" data-aos-delay="300">Hi,I’m Mohan raj, And I turn
               imagination into interactive pixels, crafting seamless digital experiences from bold ideas.</p>
             <div class="cta-buttons" data-aos="fade-up" data-aos-delay="600">
-              <a href="#work" class="btn btn-brand me-3" data-aos="fade-up">Explore My Work</a>
-              <a href="#" class="link-custom">Call: +91 9698215988</a>
+              <a href="#work" class="btn btn-brand me-3" data-aos="fade-up" style="transition: all 0.5s ease-in-out;">Explore My Work</a>
+              <a href="tel:+91 9698215988" class="link-custom">Call: +91 9698215988</a>
             </div>
           </div>
 
@@ -351,8 +354,8 @@
           </div>
           <div class="col-auto">
             <div class="social">
-              <a href="" class="me-3"><i class="lab la-linkedin"></i></a>
-              <a href=""><i class="lab la-github"></i></a>
+              <a href="https://www.linkedin.com/in/mohanraj2004?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="me-3"><i class="lab la-linkedin"></i></a>
+              <a href="https://github.com/mohanxz/mohanxz.github.io.git"><i class="lab la-github"></i></a>
             </div>
           </div>
         </div>
