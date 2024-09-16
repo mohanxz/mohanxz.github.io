@@ -1,16 +1,16 @@
 @font-face {
-    font-family: digital-7;
+    font-family:digital-7 ;
     src: url("digital-7/digital-7.ttf");
 }
 
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
 }
 
 :root {
     --primary-color: #4296cead;
+   
     --text-color: #ecf0f1;
 }
 
@@ -19,10 +19,15 @@ body {
     width: 100vw;
     background: linear-gradient(rgba(0,0,0,0.5)),(rgba(0,0,0,0.5));
     background-color: #181a1c;
-    font-family: digital-7;
-    overflow: hidden; /* Prevent scrolling */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     user-select: none;
     cursor: pointer;
+    gap: 50px;
+    font-family:digital-7;
+    
 }
 
 h2 {
@@ -30,35 +35,33 @@ h2 {
     text-shadow: 0 0 10px var(--primary-color);
     font-size: 50px;
     font-weight: 900;
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
+   margin-left: 60px;
+   
 }
 
 .frame {
     width: 600px;
     height: 300px;
     padding: 10px;
+    line-height: 300px;
     border: 50px solid var(--primary-color);
     border-radius: 10px;
-    background-color: #000000;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    font-size: 40px;
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-left: 50px;
+    background-color: #000000;
 }
 
 .clock {
+    font-family: digital-7;
     font-size: 100px;
     color: var(--text-color);
     text-shadow: 0 0 20px var(--primary-color);
-    position: relative; /* Static within the frame */
+    position: fixed;
+    font-family: digital-7;
 }
 
 .clock::before {
@@ -74,74 +77,57 @@ h2 {
 }
 
 .date {
+    font-family: digital-7;
     font-size: 40px;
     color: var(--text-color);
     text-shadow: 0 0 10px var(--primary-color);
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
+    margin-top: 250px;
+    margin-left: 300px;
 }
-
-/* Responsive Design for Small Screens */
 @media (max-width: 600px) {
     h2 {
-        font-size: 30px;
+        font-size: 1.5em;
     }
 
     .clock {
-        font-size: 60px;
+        font-size: 8vw;
     }
 
     .date {
-        font-size: 20px;
-    }
-
-    .frame {
-        width: 90%;
-        height: 200px;
-        border-width: 20px;
+        font-size: 1.2em;
     }
 }
 
 @media (max-width: 400px) {
     h2 {
-        font-size: 20px;
+        font-size: 1.2em;
     }
 
     .clock {
-        font-size: 40px;
+        font-size: 10vw;
     }
 
     .date {
-        font-size: 18px;
+        font-size: 1em;
     }
 
     .frame {
-        width: 90%;
-        height: 150px;
-        border-width: 15px;
+        width: 100%;
+        padding: 10px;
     }
 }
 
-/* Landscape mode for small screens */
+/* Landscape orientation for small screens */
 @media (max-width: 600px) and (orientation: landscape) {
     h2 {
-        font-size: 20px;
+        font-size: 1.2em;
     }
 
     .clock {
-        font-size: 30px;
+        font-size: 12vw;
     }
 
     .date {
-        font-size: 15px;
-    }
-
-    .frame {
-        width: 90%;
-        height: 100px;
-        border-width: 10px;
+        font-size: 0.9em;
     }
 }
