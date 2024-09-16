@@ -39,7 +39,6 @@ h2 {
    
 }
 
-
 .frame {
     width: 600px;
     height: 300px;
@@ -84,5 +83,4 @@ h2 {
     text-shadow: 0 0 10px var(--primary-color);
     margin-top: 250px;
     margin-left: 300px;
-    
 }
