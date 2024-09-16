@@ -84,3 +84,50 @@ h2 {
     margin-top: 250px;
     margin-left: 300px;
 }
+@media (max-width: 600px) {
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .clock {
+        font-size: 8vw;
+    }
+
+    .date {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 400px) {
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .clock {
+        font-size: 10vw;
+    }
+
+    .date {
+        font-size: 1em;
+    }
+
+    .frame {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Landscape orientation for small screens */
+@media (max-width: 600px) and (orientation: landscape) {
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .clock {
+        font-size: 12vw;
+    }
+
+    .date {
+        font-size: 0.9em;
+    }
+}
