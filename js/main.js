@@ -96,3 +96,9 @@ toggle.addEventListener('click',()=>{
   
   localStorage.setItem('theme',newMode);
 })
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  document.onkeydown = function(e) {
+    if (e.key === 'F12') {
+      return false;
+    }
+  };
