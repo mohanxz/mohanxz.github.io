@@ -15,36 +15,84 @@ AOS.init({
 })
 
 
-let mes=document.getElementById('me');
-let spans=document.querySelectorAll('span');
-let bt=document.querySelectorAll('div')
+let body=document.querySelector('body');
+const toggle=document.getElementById('toggle');
+let indicator=document.querySelector('.indicator');
+let me=document.querySelector('.gradient-text');
+let navbar=document.querySelector('.navbar');
+let anc=document.querySelectorAll('a');
+let myself=document.getElementById('me');
 
 
-function colorChange(colorss){
-  spans.forEach(span=>{
-    span.style.color=colorss;
-
-  })
+let modes=['m1.jpg','m2.jpg','m3.jpg'];
+let currentIndex=0;
+function fav(){
+  let link=document.getElementById('favicon');
+  link.href='/images/'+modes[currentIndex];
+  currentIndex=(currentIndex+1) % modes.length;
 
 }
-function changeColor(colors){
-  bt.forEach(span=>{
-    span.style.color=colors;
+setInterval(fav,1000);
 
-  })
+
+
+
+
+function applyMode(mode){
+  if(mode==='dark'){
+    body.classList.replace('light','dark');
+    toggle.style.backgroundColor="white"
+    toggle.classList.remove('active');
+    toggle.style.backgroundImage='url(/images/pexels-arnie-chou-304906-1229042.jpg)'
+    toggle.style.backgroundPosition=''
+    indicator.style.transition='0.5s';
+    me.style.backgroundImage='url(/images/mortext.jpg)'
+    navbar.style.backgroundImage='linear-gradient(315deg, #130f40 0%, #000000 74%),url(/images/sidebars.jpeg)';
+    myself.style.borderColor='#deff58'
+    
+    myself.addEventListener('mouseenter',()=>{
+      myself.style.borderColor="#FF6600";
+    })
+    myself.addEventListener('mouseleave',()=>{
+       myself.style.borderColor="#deff58";
+    })
+    
+    
+  }
+  else{
+    body.classList.replace('dark','light');
+    toggle.classList.add('active');
+    toggle.style.backgroundImage='url(/images/morsky.jpg)'
+    toggle.style.backgroundSize='cover';
+    toggle.style.filter='brightness(1.5)'
+    me.style.backgroundImage='url(/images/wakdn.webp)';
+    toggle.style.backgroundPosition='-100px'
+    navbar.style.backgroundImage='linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%),url(/images/sidebars.jpeg)';
+    myself.style.borderColor='#00a6ff'
+    myself.addEventListener('mouseenter',()=>{
+      myself.style.borderColor="#d7aef3";
+    })
+    myself.addEventListener('mouseleave',()=>{
+      myself.style.borderColor="#00a6ff";
+    })
+    
+  }
+  
 }
 
-mes.addEventListener('mouseover',()=>{
-  changeColor('#96C9F4');
-  colorChange("#A084E8");
 
-  dynamic();
+window.onload=()=>{
+  const savedMode=localStorage.getItem('theme')||'dark';
+  applyMode(savedMode);
+  
+  
+};
 
+toggle.addEventListener('click',()=>{
+  const currentMode=body.classList.contains('dark')?'dark':'light';
+  const newMode=currentMode==='dark'?'light':'dark';
+  
+  applyMode(newMode);
+  
+  localStorage.setItem('theme',newMode);
 })
-
-mes.addEventListener('mouseleave',()=>{
-  changeColor('');
-  colorChange('');
-})
-
-
