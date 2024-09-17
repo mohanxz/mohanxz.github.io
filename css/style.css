@@ -314,27 +314,27 @@ body.light {
 .gradient-text{
     font-size:30px ;
     position: relative;
-    right: 50px;
+    right: 10px;
 }
 .explore{
     width: 190px;
     position: relative;
-    right: 50px; 
+    right: 10px; 
 }
 .explores{
     width: 170px;
     position: relative;
-    left: -40px;
+    left: -7px;
 }
 
 h1,.hi{
-    width: 200px; 
+    width: 250px; 
     position: relative;
-    right: 50px; 
+    right: 10px; 
 }
 .head{
     position: relative;
-    left: -10px;
+    left: -60px;
 }
 .con{
     position: relative;
@@ -393,7 +393,11 @@ h1,.hi{
     
 }
 
-
+.gradient-text{
+    font-size:25px ;
+    position: relative;
+    right: 50px;
+}
 .explore{
     width: 190px;
     position: relative;
@@ -405,7 +409,7 @@ h1,.hi{
     left: -40px;
 }
 
-h1{
+h1,.hi{
     width: 200px; 
     position: relative;
     right: 50px; 
