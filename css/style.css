@@ -272,7 +272,7 @@ body.light {
   }
   
   
-  @media (max-width:450px) {
+  @media  (min-width:370px) and (max-width:450px) {
       .service{
           width: 350px;
           position: relative;
@@ -310,6 +310,117 @@ body.light {
     top:-120px;
     left: 70px;
     
+}
+.gradient-text{
+    font-size:30px ;
+    position: relative;
+    right: 50px;
+}
+.explore{
+    width: 190px;
+    position: relative;
+    right: 50px; 
+}
+.explores{
+    width: 170px;
+    position: relative;
+    left: -40px;
+}
+
+h1,.hi{
+    width: 200px; 
+    position: relative;
+    right: 50px; 
+}
+.head{
+    position: relative;
+    left: -10px;
+}
+.con{
+    position: relative;
+    left: 5px;
+}
+
+}
+  @media (max-width:360px) {
+
+
+      .service{
+          width: 340px;
+          position: relative;
+          left: -75px;
+        }
+        .card-custom{
+            width: 350px;
+            position: relative;
+            right: 50px;
+        }
+     .bg-base{
+      width: 310px;
+       position: relative;
+        right: 70px;
+          }
+
+ 
+
+.form-group input{
+    width: 310px;
+    position: relative;
+    right: 65px;
+    
+}
+.form-group textarea{
+    width: 310px;
+    position: relative;
+    right: 65px;
+    
+}
+.connect{
+    width: 200px;
+    position: relative;
+    left: -20px;
+}
+
+
+
+#toggle{
+    top:50px;
+    left: 260px;
+}
+#cv{
+    top:-50px;
+    left: 80px;
+    
+}
+
+.gradient-text{
+    font-size:25px ;
+    position: relative;
+    right: 50px;
+}
+.explore{
+    width: 190px;
+    position: relative;
+    right: 50px; 
+}
+.explores{
+    width: 170px;
+    position: relative;
+    left: -40px;
+}
+
+h1,.hi{
+    width: 200px; 
+    position: relative;
+    right: 50px; 
+}
+.head{
+    position: relative;
+    left: -10px;
+}
+.con{
+    position: relative;
+    left: -15px;
 }
 
 }
