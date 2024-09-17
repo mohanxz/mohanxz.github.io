@@ -393,11 +393,7 @@ h1,.hi{
     
 }
 
-.gradient-text{
-    font-size:25px ;
-    position: relative;
-    right: 50px;
-}
+
 .explore{
     width: 190px;
     position: relative;
@@ -409,7 +405,7 @@ h1,.hi{
     left: -40px;
 }
 
-h1,.hi{
+h1{
     width: 200px; 
     position: relative;
     right: 50px; 
