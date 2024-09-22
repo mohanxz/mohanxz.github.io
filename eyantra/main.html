@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power fence Innovation</title>
+    <link rel="icon" href="image_processing20200508-28885-mw1csq.png">
+</head>
+<body>
+    <style>
+        body{
+            background-color: rgb(2, 9, 36);
+            color: white;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+           
+        }
+        button{
+            padding:10px;
+        }
+        input{
+            padding: 17px;
+            border-radius: 15px;
+        }
+        .user{
+            position: relative;
+            right: -70%;
+            bottom:500px;
+        }
+        .input{
+            width: 300px;
+            font-size: larger;
+            font-weight: 900;
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+        .but{
+            position: relative;
+            top: -90px; 
+            left: 6%;
+            padding: 20px;
+            border-radius:24px;
+            border: none;
+            font-size: larger;
+            font-weight: 900;
+            background-color: rgb(152, 18, 18);
+            color: #fff;
+
+               }
+               .rtsp{
+                font-weight: 700;
+                width: 700px;
+                font-size: larger;
+                background-color: rgb(199, 220, 239);
+               }
+               .btn{
+                padding: 18px;
+                position: relative;
+                border: none;
+                position: relative;
+                left: 50%;
+                top: -57px;
+                border-radius: 20px;
+                font-weight: 700;
+                font-size: larger;
+                background-color: rgb(255, 253, 127);
+
+               }
+               h1{
+                position: relative;
+                top: 15px;
+               }
+
+               #stop{
+                padding: 18px;
+                position: relative;
+                border: none;
+                position: relative;
+                border-radius: 20px;
+                font-weight: 700;
+                font-size: larger;
+                top: 50px;
+                left: -490px;
+                background-color: rgb(70, 135, 12);
+               }
+
+            #stream{
+                border-radius: 15px;
+                width: 800px;
+                margin-left: 20px;
+                border: dotted 5px rgb(74, 4, 4);
+            }
+            h2{
+            position: relative;
+            top: -80px;
+            left:220px;
+            z-index: 3;
+            color: black;
+            font-size:30px;
+            }
+            #volt{
+            width: 50px;
+            position: relative;
+            top: -150px;
+            left: 285px;
+            }
+       
+    </style>
+
+    <div class="header">
+        <input type="text" value="RTSP URL://ip-addr/user=admin&password=&channel=1&stream=0.sdp?" class="rtsp" style="margin-top: 25px;">
+        <br>
+        <button id="start" class="btn">Start Stream</button>
+        <br>
+    </div>
+    <div class="container">
+        <img id="stream" src="fencele.jpg" alt="">
+        <button id="stop">Stop Stream</button>
+    </div>
+    <div class="user">
+        <h1>Detected</h1>
+        <input class="input " type="text" value="Person Spotted">
+        <h1 >Voltage Level</h1>
+        <input class="input" type="number" value="4000" style="font-size: 30px;"><h2>Volts</h2>
+        <img  id="volt"  src="image_processing20200508-28885-mw1csq.png" alt="">
+    
+        <div class="button-container">
+            <button class="but">Stop Current</button>
+        </div>
+    </div>
+    
+</body>
+</html>
