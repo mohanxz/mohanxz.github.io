@@ -163,3 +163,15 @@ a:hover {
   font-size: 40px;
 }
 
+
+@media screen and (min-width:1531){
+  body{
+    display: block;
+  }
+}
+@media screen and (max-width:1530px){
+  body{
+    display: none;
+  }
+}
+
