@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
+
+body {
+  background-color: #003f7d;
+  overflow: hidden;
+  font-family: "Tenor Sans", sans-serif;
+}
+
+#start{
+  position: relative;
+  top:40%;
+  font-size: 50px;
+  left: 30%;
+
+}
+
+#unlock{
+  position: relative;
+  top: 40%;
+  font-size: 30px;
+  left: 30%;
+}
+.bg-custom {
+    background: linear-gradient(90deg, #0D6EFD 0%, #000E6A 100%);
+    background-size: cover;
+    background-image: url('background-login.jpg');
+    background-position: center;
+  }
+  
+  .bg-custom {
+      background-color: #003f7d;
+       /* Add background image */
+      background-size: cover;
+      background-position: center;
+    }
+
+/* Updated Form Background */
+.login-container {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.login-form-container {
+    /* Fallback in case image doesn't load *
+   /* Applying the background image to the form */
+    background-image: url('./form-bg.png');
+    background-size: cover; /* Ensure the image covers the entire form */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+.login-form {
+  max-width: 350px;
+  margin: auto;
+  position: relative;
+  top: -70%;
+  left: 108%;
+
+}
+
+/* Adjust the logo at the top of the form */
+.logo-img {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.text-muted {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+input {
+  height: 45px;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ced4da;
+  margin-bottom: 20px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #0066ff, #00ccff);
+  border: none;
+  height: 50px;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #0052cc, #00bfff);
+}
+
+a {
+  font-weight: 500;
+  color: #0066ff;
+}
+
+a:hover {
+  color: #0052cc;
+}
+
+.pt-3 a {
+  font-size: 14px;
+  color: #0066ff;
+  text-decoration: none;
+}
+
+.pt-3 a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 576px) {
+  .login-form-container {
+    padding: 20px;
+  }
+
+  .display-4 {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  .login-form {
+    padding: 15px;
+  }
+}
+
+
+#formbg{
+  height: 650px;
+  width: 550px;
+  position: relative;
+  top: 200px;
+  z-index: 0;
+}
+#ca{
+  position: relative;
+  top: 5px;
+  right: -55%;
+  color: #32043f;
+  font-weight: 600;
+}
+.nw{
+  position: relative;
+  left: 50px;
+  top: 30px;
+  font-weight: 600;
+}
+
+#we{
+  font-size: 40px;
+}
+
