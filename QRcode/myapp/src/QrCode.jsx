@@ -51,7 +51,7 @@ export const QrCode=()=>{
                 <div className="buttons">
                 <button className="generate-btn" disabled={loading} onClick={generateQr}>Generate Qr Code</button>
                 <button className="download-btn" onClick={downloadQr}>Download QR Code</button>
-                <p className="design">Designed by <a href="https://mohanxz.github.io/" style={{color:"red"}} >mohanRaj</a></p>
+                <p className="design">Designed by <a href="https://mohanxz.github.io/" id="by"  style={{color:"red"}} >mohanRaj</a></p>
                 </div>
             </div>
         </div>
