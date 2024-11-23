@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import Input from './components/Input.jsx'
 export const QrCode=()=>{
    const [img,setImg] =useState("");
    const[loading,setLoading]=useState(false);
@@ -39,8 +39,8 @@ export const QrCode=()=>{
         <>
         <div className="app-container" >
             <h1>QR Code Generator</h1>
-           {loading && <p>Please wait . . .</p>}
-                {img && <img src={img} alt="" className="qrimage"/>}
+           { loading && <p>Please wait . . .</p>}
+                { img && <img src={img} alt="" className="qrimage"/>}
             <div>
                 <label htmlFor="dataInput" className="input-label" >
                     Data for Qr code :
@@ -57,7 +57,6 @@ export const QrCode=()=>{
             </div>
         </div>
 
-        
         </>
     )
 }
