@@ -1,5 +1,4 @@
 import { useState } from "react"
-import Input from './components/Input.jsx'
 export const QrCode=()=>{
    const [img,setImg] =useState("");
    const[loading,setLoading]=useState(false);
