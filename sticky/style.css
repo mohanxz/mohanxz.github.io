@@ -42,7 +42,7 @@ text-align: center;
 }
 
 .add-btn:hover {
-  border-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(151, 65, 65, 0.2);
   color: rgba(0, 0, 0, 0.2);
 }
 
