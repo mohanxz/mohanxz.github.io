@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <h1 class="head">CSS Tutorial</h1>
+   
+<h1 style="color: rgb(219, 111, 176);" >Important Topics</h1>
+    <h1>Positions</h1>
+
+    <h3>Default position Static</h3>
+    <br>
+
+    <h2>We cannot move static element</h2>
+    <div class="one">Static</div>
+
+    <h2>We can move Relative element</h2>
+    <div class="two">Relative</div>
+    <ul>
+        <h4>By using</h4>
+        <li>left</li>
+        <li>right</li>
+        <li>bottom</li>
+        <li>top</li>
+    </ul>
+
+    <h2 style="color: rgb(213, 145, 201);">-/ Note : Z index will give priority to the element which has Higher Value /-
+    </h2>
+
+
+    <h2>Position Absolute will take the display </h2>
+    <p>
+    <h3>For example:-
+        <blockquote>we are giving top:50 px it will be moved 50 px from the screen</blockquote>
+    </h3>
+
+    </p>
+    <h3>We can lock this {absolute} by giving relative position to the parent of the absolute Element</h3>
+    <h3>Then it will move from the parent element</h3>
+
+    <div class="three">
+
+        <h5>Hello</h5>
+    </div>
+
+    <div class="four">
+        <div class="fourz">FIXED without any condition</div>
+        <h2>Fixed position used to fix the element in the particular area</h2>
+
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error aliquid explicabo consequatur nostrum commodi
+        cumque exercitationem consequuntur quasi laudantium repudiandae reiciendis ipsum dicta perferendis facilis nihil
+        iste harum reprehenderit laboriosam ut, dolorem delectus. Aliquam aspernatur, exercitationem dicta minus, modi
+        illum doloribus porro quibusdam, delectus corrupti eligendi fugiat animi totam enim blanditiis eaque? Rerum esse
+        ea illum voluptatum aspernatur doloremque dolorem quisquam, nemo veniam excepturi? Doloremque praesentium,
+        doloribus adipisci officiis obcaecati aut nihil maiores magnam nisi corrupti ducimus minima tempore, tempora
+        mollitia ut illo porro suscipit modi ullam, necessitatibus eius? Sit accusantium provident, doloremque amet
+        sequi enim ratione sunt consequatur quis excepturi vel dignissimos? Eligendi illum molestias, quibusdam magnam
+        quidem officiis ratione dignissimos numquam rem nihil neque iure eos fugiat quaerat voluptate aspernatur atque
+        ullam corporis sed facere ipsam possimus? Placeat, ad commodi. Nisi omnis ex recusandae animi ducimus, excepturi
+        earum ea voluptatem esse obcaecati officiis reprehenderit, cum atque. Mollitia, assumenda.
+    </div>
+
+    <h2>Sticky is used to specify the position. for eg:- if we are giving top 20px to an element then when the element
+        reaches the specified position it will be fixed</h2>
+    <p>
+        .sticky{
+        position: sticky;
+        bottom: 50px;
+        }
+    </p>
+
+
+    <h1 class="sticky">Sticky</h1>
+
+
+
+    <h2 class="tu">When the sticky reaches 50px bottom from the screen/next element it will be sticked there</h2>
+
+
+    <div class="display-section">
+        <h1>Display</h1>
+        <h2>Display : Block</h2>
+        <H3>Heading,paragraph,div - Display is Block by Default</H3>
+        <div class="block-element">
+            <h1>&lt;h1&gt;</h1>
+            <h1>&lt;p&gt;</h1>
+            <h1>&lt;div&gt;</h1>
+
+        </div>
+        <h2>Display : Inline</h2>
+        <H3>video,span,img - Display is Inline by Default</H3>
+
+        <div class="inline-elements">
+            <h1>&lt;video&gt;</h1>
+            <h1>&lt;span&gt;</h1>
+            <h1>&lt;img&gt;</h1>
+        </div>
+        <br>
+        <div class="inline_block">
+            <h2>Display : inline-block</h2>
+            <h3>When we are explicitly changing the display from block to inline we cannot resize the element <br>
+                In that case we have to use Display : inline-block;
+            </h3>
+            <div class="inline-block-element">
+                <h3 class="inline-">&lt;h1&gt; inline</h1>
+                    <h3>
+                        <span style="color: rgb(93, 118, 49);">We can not resize element when we change display
+                            from block to inline </span> <br>
+                        <h3>Here h1's display property is inline </h3>
+                        <h4>
+
+                            h1{<br>
+                            background-color: rgb(149, 123, 174);<br>
+                            padding: 30px;<br>
+                            color: black;<br>
+                            border-radius: 15px;<br>
+                            display: inline;<br>
+                            position: relative;<br>
+                            top: 50px;<br>
+                            <span style="color: rgb(175, 72, 106);">The height and width will not work here.</span> <br>
+                            height: 50px;<br>
+                            width: 500px;<br>
+
+                            }
+
+                    </h3><br>
+
+                    <h3 class="inline-block">&lt;h1&gt;inline-block</h1>
+
+                        <h3>Here h1's display property is inline-block </h3>
+                        <h4>
+
+                            h1{<br>
+                            background-color: rgb(149, 123, 174);<br>
+                            padding: 30px;<br>
+                            color: black;<br>
+                            border-radius: 15px;<br>
+                            display: inline;<br>
+                            position: relative;<br>
+                            top: 50px;<br>
+                            <span style="color: rgb(175, 72, 106);">The height and width will  work here.</span> <br>
+                            height: 50px;<br>
+                            width: 500px;<br>
+
+                            }
+
+                    </h3>
+                </h3>
+
+            </div>
+        </div>
+
+        <div class="flex">
+            <h2>justify-content : start</h2>
+            <div class="flex-main">
+
+                <div class="first"></div>
+                <div class="second"></div>
+                <div class="third"></div>
+
+            </div>
+
+            <h2>justify-content : center;</h2>
+            <div class="flex-second">
+
+                <div class="first"></div>
+                <div class="second"></div>
+                <div class="third"></div>
+            </div>
+
+            <h2>justify-content : end;</h2>
+            <div class="flex-third">
+
+                <div class="first"></div>
+                <div class="second"></div>
+                <div class="third"></div>
+            </div>
+            <h2><justify-content:space-></justify-content:space->around;</h2>
+            <div class="flex-thirds">
+
+                <div class="first"></div>
+                <div class="second"></div>
+                <div class="third"></div>
+            </div>
+        
+                <h2>justify-content : space-between;</h2>
+                <div class="flex-fourth">
+    
+                    <div class="first"></div>
+                    <div class="second"></div>
+                    <div class="third"></div>
+    
+                </div>
+                <br>
+                <h2>justify-content : space-evenly;</h2>
+                <div class="flex-fifth">
+    
+                    <div class="first"></div>
+                    <div class="second"></div>
+                    <div class="third"></div>
+    
+                </div>
+                <br>
+                <h2>flex-direction : column;</h2>
+                <div class="flex-sixth">
+    
+                    <div class="first"></div>
+                    <div class="second"></div>
+                    <div class="third"></div>
+    
+                </div>
+                <h2>align-items :center ;</h2>
+                <div class="flex-seventh">
+    
+                    <div class="first"></div>
+                    <div class="second"></div>
+                    <div class="third"></div>
+    
+                </div>
+                <h2>flex-direction :columns-reverse ;</h2>
+                <div class="flex-eigth">
+    
+                    <div class="first"></div>
+                    <div class="second"></div>
+                    <div class="third"></div>
+    
+                </div>
+        </div>
+
+    
+
+
+
+
+    </div>
+
+ <h1>Media Query</h1>
+ <h2>Media query is used for the responsiveness of the website with  mobile,tab,computer.</h5>
+    <h3>@media screen and (max-width:500px) {<br>
+        textarea{<br>
+            background-color: rgb(188, 227, 149);<br>
+        }
+    }</h3>
+    <h2>Max-width covers from 0 to 500px </h2>
+    <h3>To see the change shrink the screen to less than 500px width</h3>
+    <h3></h3>
+
+    <textarea name="" id=""></textarea>
+    <h2>Min-width covers from mentioned to Infinity px </h2>
+    <h3>To see the change shrink the screen to greater than mentioned width</h3>
+    <h3></h3>
+
+    <textarea name="" id=""></textarea>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

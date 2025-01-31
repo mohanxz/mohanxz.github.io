@@ -1,0 +1,252 @@
+.one {
+    background-color: rgb(113, 143, 67);
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+    position: static;
+    color: black;
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 30px;
+
+}
+
+.two {
+    background-color: rgb(235, 161, 161);
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+    position: relative;
+    color: black;
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+    left: 50px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 30px;
+
+}
+
+.three {
+    background-color: rgb(230, 230, 139);
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+    position: relative;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 30px;
+
+}
+
+.four {
+
+    margin: 5px;
+    position: relative;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 30px;
+
+}
+
+.fourz {
+    font-size: 20px;
+    font-weight: 800;
+    color: hotpink;
+    left: 80%;
+    top: 710px;
+    position: fixed;
+    margin-bottom: 30px;
+
+}
+
+h5 {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    left: 30px;
+    margin-bottom: 30px;
+
+}
+
+h2 {
+    color: rgb(186, 147, 20);
+    margin-bottom: 30px;
+
+}
+
+.sticky {
+    position: sticky;
+    bottom: 50px;
+    color: rgb(127, 216, 44);
+    margin-bottom: 30px;
+
+}
+
+.tu {
+    position: relative;
+    top: -98px;
+    left: 110px;
+    color: lightcoral;
+
+}
+
+.block-element {
+    margin-bottom: 20px;
+    margin-bottom: 30px;
+
+}
+
+.block-element h1 {
+    padding-block: 20px;
+    position: relative;
+    top: 10px;
+    margin-block: 10px;
+    background-color: rgb(117, 117, 219);
+    border-radius: 15px;
+    padding-inline: 10px;
+    color: black;
+}
+
+.inline-elements h1 {
+    display: inline;
+    padding-block: 20px;
+    position: relative;
+    top: 30px;
+    margin-inline: 10px;
+    color: rgb(0, 0, 0);
+    margin-block: 10px;
+    background-color: rgb(251, 251, 255);
+    border-radius: 15px;
+    padding-inline: 10px;
+
+}
+
+.inline_block {
+    position: relative;
+    top: 80px;
+}
+
+.display-section {
+    position: relative;
+    top: -100px;
+}
+
+.inline- {
+    background-color: rgb(149, 123, 174);
+    padding: 30px;
+    color: black;
+    border-radius: 15px;
+    display: inline;
+    position: relative;
+    top: 170px;
+    left: 300px;
+    height: 100px;
+    width: 100px;
+
+}
+
+.inline-block {
+    background-color: rgb(149, 123, 174);
+    padding: 30px;
+    color: black;
+    border-radius: 15px;
+    display: inline-block;
+    margin-left: 100px;
+    position: relative;
+    top: 170px;
+    left: 300px;
+    height: 50px;
+    width: 500px;
+
+}
+
+.flex-main{
+    position: relative;
+    display: flex;
+    justify-content: start;
+}
+.flex{
+    position: relative;
+    top: 100px;
+}
+.flex-second {
+    position: relative;
+    display: flex;
+    justify-content:center
+}
+.flex-third {
+    position: relative;
+    display: flex;
+    justify-content: end;
+}
+.flex-thirds {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+.flex-fourth {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.flex-fifth {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.flex-sixth {
+    position: relative;
+    display: flex;
+    flex-direction: column;   
+}
+.flex-seventh {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flex-eigth {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.first{
+    height: 100px;
+    width: 100px;
+    background-color: azure;
+    margin: 10px;
+    border-radius: 100%;
+}
+.second{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(124, 221, 221);
+    margin: 10px;
+    border-radius: 100%;
+
+
+}
+.third{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(48, 96, 96);
+    margin: 10px;
+    border-radius: 100%;
+
+
+}
+
+
+@media screen and (max-width:500px) {
+    textarea{
+        background-color:yellow;
+    }
+}
+@media screen and (min-width:800px) {
+    textarea{
+        background-color: white;
+    }
+}
