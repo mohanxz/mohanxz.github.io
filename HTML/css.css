@@ -263,3 +263,9 @@ a{
     font-weight: 800;
     font-size: 30px;
 }
+
+@media screen and (max-width:420px) {
+    body{
+        width: 100%;
+    }
+}
