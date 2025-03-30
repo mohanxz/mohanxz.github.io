@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50vh;
+    width: 400px;
+    position: relative;
+    top:100px;
+    left: 10%;
+    padding: 18px;
+    border: solid 3px rgb(125, 149, 36);
+    border-radius: 10%;
+    z-index: 1;
+}
+
+label {
+    position: relative;
+    right: 130px;
+    font-weight: 600;
+    
+}
+
+input {
+    width:80%;
+    padding-block: 10px;
+    padding-inline: 18px;
+    border-radius: 10px;
+    border:solid 2px;
+    margin-block: 10px;
+    border: none;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+input:focus{
+    border: none;
+    outline: none;
+}
+
+#head{
+    padding:18px;
+    color: orange;
+}
+
+#btnSubmit{
+    width: 100px;
+    margin: auto;
+    background-color:rgb(125, 149, 36);
+    color: rgb(7, 0, 0);
+}
+
+#genBtn{
+   padding: 12px; 
+}
+
+
+table{
+    position: relative;
+ left: 50%;
+ bottom: 35%;
+ z-index: 10;
+ transform: translateX(-50%);
+ margin-top: 30px;
+ max-height: 50%;
+ overflow-y: auto;
+ width: 100%;
+}
+
+table{
+    width:40%;
+    border-collapse: collapse;
+
+}
+
+th,td{
+    border: solid 1px white;
+    text-align: center;
+    padding: 10px;
+}
+
+
+.btn-edit ion-icon,
+.btn-delete ion-icon{
+ pointer-events: none;
+}
+
+ ion-icon:hover{
+    cursor: pointer;
+}

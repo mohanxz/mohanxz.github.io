@@ -102,7 +102,7 @@
 
 // rest(1,2,3,4,5,6);
 
-let arr=[10,100,1000,100000];
+// let arr=[10,100,1000,100000];
 
 // let str="javascript";
 
@@ -118,61 +118,282 @@ let arr=[10,100,1000,100000];
 //     console.log(iterator);
 // }
 
-arr.pop();
+// arr.pop();
 
-arr.push(500);
-console.log(arr);
+// arr.push(500);
+// console.log(arr);
 
-arr.shift();
-console.log(arr);
+// arr.shift();
+// console.log(arr);
 
-arr.unshift(1,2);
-console.log(arr);
+// arr.unshift(1,2);
+// console.log(arr);
 
-arr.splice(1,2);
-console.log(arr);
+// arr.splice(1,2);
+// console.log(arr);
 
-arr.splice(1,0,"a","b");
+// arr.splice(1,0,"a","b");
 
-arr.splice(1,0,"a");
-
-
-console.log(arr);
-arr.splice(1,1,"m");
+// arr.splice(1,0,"a");
 
 
-let arr4=[1,2,3,4,[5,6,]];
-
-let newArray=arr4.flat();
-
-console.log(newArray);
+// console.log(arr);
+// arr.splice(1,1,"m");
 
 
-let arr5=[1,23,4,[2,34,[5,5]]];
+// let arr4=[1,2,3,4,[5,6,]];
 
-let newArra=arr5.flat(1);
+// let newArray=arr4.flat();
 
-
-
-newArra.fill(0);
-console.log(newArra);
-
-arr.push(10,10,10);
-console.log(arr);
+// console.log(newArray);
 
 
-let a=[1,2,3,4,5];
+// let arr5=[1,23,4,[2,34,[5,5]]];
 
-a.splice(1,1,9);
-console.log(a);
+// let newArra=arr5.flat(1);
 
 
 
+// newArra.fill(0);
+// console.log(newArra);
 
-let fruits=["apple","banana","mango","musk melon"]
+// arr.push(10,10,10);
+// console.log(arr);
+
+
+// let a=[1,2,3,4,5];
+
+// a.splice(1,1,9);
+// console.log(a);
+
+
+
+// // let newArr=fruits.forEach(fruit=>{
+// //     return `item ${++index} : ${fruit}`;
+// // });
+
+// // console.log(newArr);
+
+
+// let fruits=["apple","banana","mango","musk melon"]
+
+// let newArr1=fruits.map((fruit,index)=> 
+//      {
+        
+//         return `item ${index+1} : ${fruit}`
+// })
+
+ 
+// console.log(newArr1);
+
+
+// let num=[41,1,3,4,5];
+
+// let greater=num.filter(num=>num>3);
+// console.log(greater);
+
+
+// let reduce=num.reduce((accumulator,currentValue)=>{
+//     return accumulator+currentValue;
+// })
+
+// console.log(reduce);
+
+// //first occurence only fetched
+// let find=num.find(num=>num%2==0);
+
+// console.log(find);
+
+
+// let vehicles=['aircraft','bus','car'];
+
+// let find1=vehicles.find(vehicles=>vehicles.startsWith('c'));
+// console.log(find1);
+
+
+// let regex=/@/;
+
+// let str="2k21aids@@@kiot.ac.in";
+
+// let found=(regex.test(str));
+
+
+// console.log(found);
+
+
+// //anonymous function
+// (function (){
+//    console.log("Good Morning")
+// })();
+
+
+// //arrow function
+// let add=(x,y)=>{
+//     return x+y;
+// }
+
+// console.log(add(2,4));
+
+// //pure function
+// // function expo(x,y){
+// //     console.log(x**y);
+// // }
+
+// expo(12,2);
+
+// //impure function
+// function math(x){
+//      console.log(Math.floor(Math.random()*10+x));
+// }
+
+// math(1);
+// math(1);
+// math(1);
+// math(1);
+
+
+// //impure function test-2
+
+// let flag=0;
+
+// let impure=(x)=>{
+//  flag++;
+//  console.log(flag+1);
+// }
+
+// impure(1);
+// impure(1);
+// impure(1);
+// impure(1);
+
+
+
+// //Higher Order function
+// let arr1=[1,2,3,4,5];
+// //map 
+// let mapped =arr1.map(arr=>arr*2);
+// console.log(mapped);
+
+
+// //filter
+// let filter=arr1.filter(arr=>arr>3);
+// console.log(filter);
+
+
+// //reduce
+// let reduce1=arr1.reduce((accumulator,currentValue)=>accumulator+currentValue);
+// console.log(reduce1);
+
+
+// function expo(x,y){
+//     console.log(x**y);
+// }
+
+
+// function num1(fun1,a,b){
+//         fun1(a,b);  
+// }
+
+// num1(expo,2,2);
+
+
+// function msg(userName="guest"){
+//     console.log("Welcome "+userName);
+// }
+
+// msg();
+// msg("mohan raj");
+
+// //Template Literal
+// let employee={
+//     Name:"mohan raj",
+//     Id:456
+// }
+
+
+// console.log(`Good morning ${employee.Name}`);
+
+// //copying array
+// let arr3=[1,2,3,4,5]
+// let array1=[];
+// array1.push(...arr3);
+// console.log(array1);
+
+// //adding elements in  array
+
+// let arr7=[10,20,30,40];
+// arr7.push(...arr7,50,60,50);
+
+// console.log(arr7);
+
+
+// //mergin array
+// let arr10=[1,2,3,4,5]
+// let array11=['m','o','h','a','n'];
+// let mergedArray=array11.push(...arr3);
+// console.log(mergedArray);
+
+// //String to array
+// let str10='mohanraj';
+
+// let strToArr=[];
+// strToArr.push(...str10);
+// console.log(strToArr);
+
+// let person1={
+//     id:101,
+//     city:'salem'
+// }
+
+// let person2={
+//     id:102,
+//     city:'chennai'
+// }
+// //using spread operator in object 
+// let persons={...person1};
+// console.log(persons);
 
 
 
 
+// let index=1;
 
+// setTimeout(()=>{
+
+//     console.log("Hi set");},5000);
+
+
+
+
+    // document.getElementById('btn').textContent="hello";
+
+
+
+    // class Customer{
+    //     #customerName;
+    //     #customerId;
+    //   constructor(customerName,customerId){
+    //         this.customername=customerName;
+    //         this.customerId=customerId;
+    //     }
+
+        
+    //     set setCustName(customerName){
+    //         this.customerName=customerName
+    //     }
+
+    //     get getCustName(){
+    //         return customerName;
+    //     }
+
+    // }
+
+
+    // const customer1=new Customer("Mohanraj",101);
+    // console.log(customer1.getCustName());
+
+
+    export function add(x,y){
+        return x+y;
+    }
 
