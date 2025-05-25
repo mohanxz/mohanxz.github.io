@@ -46,6 +46,7 @@ function applyMode(mode){
     toggle.style.backgroundImage='url(/images/pexels-arnie-chou-304906-1229042.jpg)'
     toggle.style.backgroundPosition=''
     indicator.style.transition='0.5s';
+    me.style.backgroundImage='url(/images/mortext.jpg)'
     navbar.style.backgroundImage='linear-gradient(315deg, #130f40 0%, #000000 74%),url(/images/sidebars.jpeg)';
     myself.style.borderColor='#deff58'
     
@@ -64,6 +65,7 @@ function applyMode(mode){
     toggle.style.backgroundImage='url(/images/morsky.jpg)'
     toggle.style.backgroundSize='cover';
     toggle.style.filter='brightness(1.5)'
+    me.style.backgroundImage='url(/images/wakdn.webp)';
     toggle.style.backgroundPosition='-100px'
     navbar.style.backgroundImage='linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%),url(/images/sidebars.jpeg)';
     myself.style.borderColor='#00a6ff'
