@@ -1,28 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 body.dark {
-    --color-body: #ffffff;
-    --color-heading:#eef3db;
-
-    --color-base: #0c0a45;
-    --color-base2: #000000;
-    --color-brand:#e0f780;
-    --color-brand2:#deff58;
-    --sidbar-width: 240px;
+    --color-body: #e0f8ff;
+    --color-heading: #ff79c6;
+    --color-base: #282a36;
+    --color-base2: #1e1f29;
+    --color-brand: #50fa7b;
+    --color-brand2: #bd93f9;
+    --sidebar-width: 240px;
     --font-base: "Bai Jamjuree", sans-serif;
 }
-
 body.light {
-    --color-body: #004d40 ;
-    --color-heading:#940d9e;
-
-    --color-base:#f5e5ff;
-    --color-base2: #ffffff;
-    --color-brand:#00a6ff ;
-    --color-brand2:#fc4552 ;
-    --sidbar-width: 240px;
+    --color-body: #586e75;
+    --color-heading: #2aa198;
+    --color-base: #fdf6e3;
+    --color-base2: #eee8d5;
+    --color-brand: #268bd2;
+    --color-brand2: #d33682;
+    --sidebar-width: 240px;
     --font-base: "Bai Jamjuree", sans-serif;
 }
+
 
 
 
