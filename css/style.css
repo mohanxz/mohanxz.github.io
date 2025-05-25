@@ -28,28 +28,33 @@ body.light {
 
 
 .gradient-text {
-    font-size: 3rem;
+    font-size: 60px;
     font-weight: bold;
+    background: linear-gradient(
+        -45deg,
+        #ff4e50,
+        #f9d423,
+        #1e90ff,
+        #8e44ad,
+        #00c9ff
+    );
     background-size: 400% 400%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradient 25s ease infinite;
-    font-size:60px;
+    animation: gradient 10s ease infinite;
 }
-
 
 @keyframes gradient {
     0% {
-        background-position: 0% 0%;
+        background-position: 0% 50%;
     }
     50% {
-        background-position: 100% 100%;
+        background-position: 100% 50%;
     }
     100% {
-        background-position: 0% 0%;
+        background-position: 0% 50%;
     }
 }
-
 
 
 .me{
