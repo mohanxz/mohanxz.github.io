@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Aromahut - Aromahut Masala & Spices</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    </head>
+<style>
+    /* Add this to your CSS */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+.container-fluid, .container {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/* Remove extra space after last section */
+section:last-child, div:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+/* Navbar Styles */
+#mainNavbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    height: 70px;
+    transition: all 0.3s ease;
+}
+
+/* Ensure body content doesn't hide behind fixed navbar */
+body {
+    padding-top: 70px;
+}
+
+.navbar-brand h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+    background: linear-gradient(to right, #ff4e00, #f9d423);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    font-weight: 600;
+    color: #333 !important;
+    padding: 0.5rem 1rem;
+    margin: 0 0.2rem;
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #ff4e00, #f9d423);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::before {
+    width: 100%;
+}
+
+.navbar-nav .nav-link.active {
+    color: #ff4e00 !important;
+}
+
+/* Shopping Cart Icon Animation */
+.navbar .fa-shopping-bag {
+    transition: all 0.3s ease;
+}
+
+.navbar .fa-shopping-bag:hover {
+    transform: scale(1.1);
+    color: #ff4e00 !important;
+}
+
+/* Search Container */
+.search-container {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1029;
+}
+
+.search-container.show {
+    transform: translateY(0);
+}
+
+.search-input {
+    border: 1px solid #eee;
+    border-radius: 25px;
+    padding: 8px 20px;
+    width: 100%;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #ff4e00;
+    box-shadow: 0 0 0 2px rgba(255, 78, 0, 0.1);
+}
+
+/* Cart Count */
+.cart-count {
+    top: -5px !important;
+    right: -11px !important;
+    height: 20px;
+    min-width: 20px;
+    font-size: 0.7rem;
+    background: linear-gradient(to right, #ff4e00, #f9d423) !important;
+}
+
+/* Added to Cart Toast */
+.added-to-cart-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1100;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.added-to-cart-toast.show {
+    opacity: 1;
+}
+/* Global Styles */
+    :root {
+        --primary-orange: #ff6b00;
+        --dark-orange: #e05a00;
+        --light-orange: #ff8c00;
+        --gold-accent: #ffd700;
+        --spice-gradient: linear-gradient(135deg, #ff6b00, #ff8c00, #ffaa00);
+        --light-gray: #f8f9fa;
+        --medium-gray: #e9ecef;
+        --dark-gray: #6c757d;
+    }
+    
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        font-family: 'Open Sans', sans-serif;
+        background-color: #f9f9f9;
+    }
+    
+    /* Navbar Styles */
+    #mainNavbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1030;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        height: 70px;
+        transition: all 0.3s ease;
+    }
+    
+    body {
+        padding-top: 70px;
+    }
+    
+    .navbar-brand h1 {
+        font-weight: 800;
+        font-size: 1.8rem;
+        background: linear-gradient(to right, #ff4e00, #f9d423);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 0;
+    }
+    
+    /* Cart Page Specific Styles */
+    .container-fluid.py-5 {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        margin: 20px auto;
+        max-width: 95%;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    table.table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-bottom: 30px;
+    }
+    
+    table.table thead tr {
+        background: var(--spice-gradient);
+        color: white;
+    }
+    
+    table.table th {
+        padding: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+    
+    table.table td {
+        padding: 15px;
+        vertical-align: middle;
+        border-bottom: 1px solid var(--medium-gray);
+    }
+    
+    table.table tr:last-child td {
+        border-bottom: none;
+    }
+    
+    table.table tr:hover {
+        background-color: rgba(255, 107, 0, 0.03);
+    }
+    
+    /* Quantity Controls */
+    .quantity-control {
+        display: flex;
+        align-items: center;
+    }
+    
+    .quantity-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--light-gray);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        color: var(--dark-gray);
+    }
+    
+    .quantity-btn:hover {
+        background: var(--primary-orange);
+        color: white;
+        transform: scale(1.1);
+    }
+    
+    .quantity-value {
+        margin: 0 15px;
+        font-weight: 600;
+        min-width: 20px;
+        text-align: center;
+    }
+    
+    /* Remove Button */
+    .remove-btn {
+        color: var(--dark-gray);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+        text-align: center;
+        display: block;
+    }
+    
+    .remove-btn:hover {
+        color: var(--primary-orange);
+        transform: scale(1.2);
+    }
+    
+    /* Cart Summary */
+    .bg-light.rounded {
+        background-color: #fff !important;
+        border: 1px solid var(--medium-gray);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .display-6.mb-4 {
+        font-size: 1.8rem;
+        color: var(--primary-orange);
+        font-weight: 700;
+    }
+    
+    .border-top, .border-bottom {
+        border-color: var(--medium-gray) !important;
+    }
+    
+    .subtotal, .shipping, .Total {
+        font-weight: 600;
+        color: var(--dark-gray);
+    }
+    
+    .Total {
+        color: var(--primary-orange) !important;
+        font-size: 1.2rem;
+    }
+    
+    /* Checkout Button */
+    .btn-border-secondary {
+        background: white;
+        border: 2px solid var(--primary-orange) !important;
+        color: var(--primary-orange) !important;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        padding: 0.8rem 2rem !important;
+        border-radius: 50px !important;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+    
+    .btn-border-secondary:hover {
+        background: var(--spice-gradient) !important;
+        color: white !important;
+        border-color: transparent !important;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2);
+    }
+    
+    /* Empty Cart State */
+    .empty-cart {
+        text-align: center;
+        padding: 50px 0;
+    }
+    
+    .empty-cart i {
+        font-size: 5rem;
+        color: var(--medium-gray);
+        margin-bottom: 20px;
+    }
+    
+    .empty-cart h3 {
+        color: var(--dark-gray);
+        margin-bottom: 20px;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        table.table thead {
+            display: none;
+        }
+        
+        table.table tr {
+            display: block;
+            margin-bottom: 20px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 10px;
+        }
+        
+        table.table td {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        table.table td:before {
+            content: attr(data-label);
+            font-weight: bold;
+            margin-right: 15px;
+            color: var(--dark-gray);
+        }
+        
+        .quantity-control {
+            justify-content: flex-end;
+        }
+    }
+
+    /* Quantity Controls */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-control button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ff6b00;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 14px;
+    margin: 0 5px;
+    outline: none;
+}
+
+.quantity-control button:hover {
+    background: #ff6b00;
+    color: white;
+    border-color: #ff6b00;
+    transform: scale(1.1);
+}
+
+.quantity-control button:active {
+    transform: scale(0.95);
+}
+
+.quantity-control span {
+    margin: 0 10px;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+    display: inline-block;
+}
+    
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fadeIn {
+        animation: fadeIn 0.5s ease forwards;
+    }
+    
+    .pulse {
+        animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+        100% { transform: scale(1); }
+    }
+    
+    /* Toast Notification */
+    .added-to-cart-toast {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1100;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .added-to-cart-toast.show {
+        opacity: 1;
+    }
+    
+    .toast-body {
+        padding: 12px 25px;
+        border-radius: 25px;
+        background: var(--spice-gradient);
+        color: white;
+        box-shadow: 0 3px 15px rgba(255, 78, 0, 0.3);
+        font-weight: 500;
+    }
+
+
+</style>
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" role="status"></div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar start -->
+        <div class="container-fluid" id="mainNavbar">
+            <div class="container px-0">
+                <nav class="navbar navbar-expand-lg navbar-light py-2" style="height: 70px;">
+                        <a href="index.html" class="navbar-brand d-flex align-items-center">
+                            <img src="img/aromahutlogo.png" alt="Logo" style="height: 90px;">
+                            <h1 class="display-6 m-0 me-2">Aromahut</h1>
+                        </a>
+                        
+                    <button class="navbar-toggler py-1 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars" style="color: #ff4e00;"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav mx-auto">
+                            <a href="index.html" class="nav-item nav-link">Home</a>
+                            <a href="shop.html" class="nav-item nav-link active">Shop</a>
+                            <a href="checkout.html" class="nav-item nav-link">CheckOut</a>
+                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button class="btn border-0 btn-md-square bg-transparent me-3 search-toggle">
+                                <i class="fas fa-search text-dark"></i>
+                            </button>
+                            <a href="cart.html" class="position-relative me-3 cart-icon">
+                                <i class="fa fa-shopping-bag fa-lg text-dark"></i>
+                                <span class="cart-count position-absolute rounded-circle d-flex align-items-center justify-content-center text-white px-1">0</span>
+                            </a>
+                            <a href="#" class="text-dark">
+                                <i class="fas fa-user fa-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            
+            <!-- Search Container -->
+            
+            </div>
+        <!-- Navbar End -->
+
+
+    
+        <!-- Modal Search End -->
+
+
+    
+ 
+
+        <!-- Cart Page Start -->
+        <div class="container-fluid py-5">
+            <div class="container py-3">
+                <!-- Use Bootstrap's margin-start utility class to adjust the left margin -->
+                <div class="table-responsive">
+                    <table class="table"> 
+                        <thead>
+                            <tr>
+                                <th>S.no</th>
+                                <th class="product-Name">Product Name</th>
+                                <th>Weight</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items">
+                            <!-- Cart items will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+                <div class="row g-2 justify-content-end">
+                    <div class="col-8"></div>
+                    <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+                        <div class="bg-light rounded">
+                            <div class="p-4">
+                                <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
+                                <div class="d-flex justify-content-between mb-4">
+                                    <h5 class="mb-0 me-4 text-dark">Subtotal:</h5>
+                                    <p class="mb-0 subtotal text-dark"></p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="mb-0 me-4 text-dark">Shipping</h5>
+                                    <div class="">
+                                        <p class="mb-0 shipping text-dark">₹1.00</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                                <h5 class="mb-0 ps-4 me-4 text-dark">Total</h5>
+                                <p class="mb-0 pe-4 Total">₹00</p>
+                            </div>
+                            <button class="btn border-secondary rounded-pill px-4 py-3 text-light  text-uppercase mb-4 ms-4" type="button" onclick="location.href='checkout.html'" style="background-color: #1F75FE;">Proceed Checkout</button>
+                        </div>
+                    </div>
+                </div>
+        <!-- Cart Page End -->
+
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+            <div class="container py-5">
+                <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
+                    <div class="row g-4">
+                        <div class="col-lg-3">
+                            <a href="#">
+                                <h1 class="text-primary mb-0">Aromahut</h1>
+                                <p class="text-secondary mb-0">Fresh products</p>
+                            </a>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="position-relative mx-auto">
+                                <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number" placeholder="Your Email">
+                                <button type="submit" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Subscribe Now</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="d-flex justify-content-end pt-3">
+                                <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i class="fab fa-youtube"></i></a>
+                                <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-item">
+                            <h4 class="text-light mb-3">Why People Like us!</h4>
+                            <p class="mb-4">typesetting, remaining essentially unchanged. It was 
+                                popularised in the 1960s with the like Aldus PageMaker including of Lorem Ipsum.</p>
+                            <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read More</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="d-flex flex-column text-start footer-item">
+                            <h4 class="text-light mb-3">Shop Info</h4>
+                            <a class="btn-link" href="">About Us</a>
+                            <a class="btn-link" href="">Contact Us</a>
+                            <a class="btn-link" href="">Privacy Policy</a>
+                            <a class="btn-link" href="">Terms & Condition</a>
+                            <a class="btn-link" href="">Return Policy</a>
+                            <a class="btn-link" href="">FAQs & Help</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="d-flex flex-column text-start footer-item">
+                            <h4 class="text-light mb-3">Account</h4>
+                            <a class="btn-link" href="">My Account</a>
+                            <a class="btn-link" href="">Shop details</a>
+                            <a class="btn-link" href="">Shopping Cart</a>
+                            <a class="btn-link" href="">Wishlist</a>
+                            <a class="btn-link" href="">Order History</a>
+                            <a class="btn-link" href="">International Orders</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-item">
+                            <h4 class="text-light mb-3">Contact</h4>
+                            <p>Address: 1429 Netus Rd, NY 48247</p>
+                            <p>Email: Example@gmail.com</p>
+                            <p>Phone: +0123 4567 8910</p>
+                            <p>Payment Accepted</p>
+                            <img src="img/payment.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright bg-dark py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Www.aromahut.in</a>, All right reserved.</span>
+                    </div>
+                    <div class="col-md-6 my-auto text-center text-md-end text-white">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">123</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+    
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+  $(document).ready(function () {
+    function updateCartItems() {
+        // Retrieve the cart items from localStorage
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const cartContainer = $('#cart-items');
+
+        if (cartContainer.length) {
+            cartContainer.empty(); // Clear any existing items
+
+            // Populate cart items
+            cartItems.forEach((item, index) => {
+                item.pricePerUnit = item.pricePerUnit || parseFloat(item.price.replace('₹', '').trim());
+
+              const itemRow = $(`
+    <tr>
+        <td>${index + 1}</td>
+        <td>${item.name}</td>
+        <td>${item.weight}</td>
+        <td>
+            <div class="quantity-control">
+                <button onclick="changeQuantity(${index}, -1)">-</button>
+                <span id="quantity-${index}">${item.quantity || '1'}</span>
+                <button onclick="changeQuantity(${index}, 1)">+</button>
+            </div>
+        </td>
+        <td id="price-${index}">${item.price}</td>
+        <td><i class="fas fa-trash-alt" style='text-align:center' data-index="${index}"></i></td>
+    </tr>
+`);
+                cartContainer.append(itemRow);
+            });
+
+            // Attach delete event listeners
+            $('#cart-items').on('click', '.fa-trash-alt', function () {
+                const index = $(this).data('index');
+
+                // Retrieve the cart items from localStorage
+                const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+                // Remove the item from the cartItems array
+                cartItems.splice(index, 1);
+
+                // Update localStorage
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+                // Update the cart display
+                updateCartItems();
+
+                // Update the subtotal and total
+                updateSubtotal();
+                updateTotal();
+            });
+        } else {
+            console.error('Cart container element not found in the DOM');
+        }
+    }
+
+    function updateSubtotal() {
+        // Retrieve the cart items from localStorage
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Calculate the total price
+        let total = 0;
+        cartItems.forEach(item => {
+            const price = parseFloat(item.price.replace('₹', '')); // Remove the currency symbol and parse as float
+            const quantity = item.quantity || 1;
+            total += price * quantity;
+        });
+
+        // Update the subtotal element
+        $('.subtotal').text(`₹${total.toFixed(2)}`);
+    }
+
+    function updateTotal() {
+        // Retrieve cart items from local storage
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Calculate the total price of cart items
+        let total = 0;
+        cartItems.forEach(item => {
+            const price = parseFloat(item.price.replace('₹', '')); 
+            const quantity = item.quantity || 1; 
+            total += price * quantity;
+        });
+
+        // Retrieve and parse the shipping cost
+        const shippingText = $('.shipping').text(); 
+        const shipping = parseFloat(shippingText.replace('₹', '')); 
+
+        // Add shipping cost to the total
+        total += shipping;
+
+        // Update the total element
+        $('.Total').text(`₹${total.toFixed(2)}`);
+    }
+
+    // Function to handle quantity changes
+    window.changeQuantity = function(index, change) {
+        // Retrieve the cart items from localStorage
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Update the quantity
+        cartItems[index].quantity = (cartItems[index].quantity || 1) + change;
+
+        // Ensure quantity doesn't go below 1
+        if (cartItems[index].quantity < 1) {
+            cartItems[index].quantity = 1;
+        }
+
+        // Update localStorage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        // Update the displayed quantity and price
+        $(`#quantity-${index}`).text(cartItems[index].quantity);
+
+        const pricePerUnit = cartItems[index].pricePerUnit || parseFloat(cartItems[index].price.replace('₹', '').trim());
+        const newPrice = pricePerUnit * cartItems[index].quantity;
+
+        if (!isNaN(newPrice)) {
+            $(`#price-${index}`).text(`₹${newPrice.toFixed(2)}`); 
+        } else {
+            console.error('Price calculation error: price is NaN');
+        }
+
+        // Update the subtotal and total
+        updateSubtotal();
+        updateTotal();
+    };
+
+    // Initialize cart items and totals on page load
+    updateCartItems();
+    updateSubtotal();
+    updateTotal();
+});
+
+    </script>
+
+      <script>
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set Masala tab as active by default
+            const defaultTab = document.querySelector('[href="#tab-1"]');
+            if (defaultTab) {
+                defaultTab.classList.add('active');
+                const tabPane = document.querySelector('#tab-1');
+                if (tabPane) {
+                    tabPane.classList.add('show', 'active');
+                }
+            }
+    
+            // Initialize cart count
+            updateCartCount();
+            
+            // Add event listeners to all radio buttons
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    updatePrice(this);
+                });
+            });
+    
+            // Set initial prices
+            document.querySelectorAll('.fruite-item').forEach(item => {
+                const checkedRadio = item.querySelector('input[type="radio"]:checked');
+                if (checkedRadio) {
+                    updatePrice(checkedRadio);
+                }
+            });
+    
+            // Search functionality
+            setupSearch();
+    
+            // Initialize beauty products tab animation
+            setupBeautyTabAnimations();
+        });
+    
+        // Function to update price display
+        function updatePrice(radio) {
+            const productContainer = radio.closest('.fruite-item');
+            const priceElement = productContainer.querySelector('.masala-price-view');
+            const weightId = radio.id;
+            const price = prices[weightId];
+            const weightLabel = radio.nextElementSibling.textContent;
+    
+            if (price !== undefined) {
+                priceElement.textContent = `₹${price.toFixed(2)} / ${weightLabel}`;
+            }
+        }
+    
+        // Add to cart function
+        function cart(event) {
+            event.preventDefault();
+            const productContainer = event.target.closest('.fruite-item');
+            const name = productContainer.querySelector('h4').textContent;
+            const selectedRadio = productContainer.querySelector('input[type="radio"]:checked');
+            
+            if (!selectedRadio) {
+                showModal('Please select a weight option');
+                return;
+            }
+            
+            const weightId = selectedRadio.id;
+            const price = prices[weightId].toFixed(2);
+            const weightText = selectedRadio.nextElementSibling.textContent;
+    
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            
+            // Check if item already exists in cart
+            const existingItemIndex = cartItems.findIndex(item => item.id === weightId);
+            
+            if (existingItemIndex >= 0) {
+                // If exists, increase quantity
+                cartItems[existingItemIndex].quantity += 1;
+            } else {
+                // If new, add with quantity 1
+                cartItems.push({
+                    name: name,
+                    price: price,
+                    weight: weightText,
+                    id: weightId,
+                    quantity: 1,
+                    timestamp: new Date().getTime()
+                });
+            }
+    
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            updateCartCount();
+            showModal(`${name} (${weightText}) added to cart. Price: ₹${price}`);
+        }
+    
+        // Function to update cart count display
+        function updateCartCount() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+            const cartCountElements = document.querySelectorAll('.cart-count');
+            
+            cartCountElements.forEach(element => {
+                element.textContent = totalItems;
+                // Add animation
+                element.classList.add('animate__animated', 'animate__bounceIn');
+                setTimeout(() => {
+                    element.classList.remove('animate__animated', 'animate__bounceIn');
+                }, 1000);
+            });
+        }
+
+       
+
+    </script>
+    </body>
+</html>

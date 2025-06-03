@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Aromahut</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<style>
+/* Navbar Styles */
+#mainNavbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    height: 70px;
+    transition: all 0.3s ease;
+}
+
+/* Ensure body content doesn't hide behind fixed navbar */
+body {
+    padding-top: 70px;
+}
+
+.navbar-brand h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+    background: linear-gradient(to right, #ff4e00, #f9d423);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    font-weight: 600;
+    color: #333 !important;
+    padding: 0.5rem 1rem;
+    margin: 0 0.2rem;
+}
+
+.navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #ff4e00, #f9d423);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::before {
+    width: 100%;
+}
+
+.navbar-nav .nav-link.active {
+    color: #ff4e00 !important;
+}
+
+/* Shopping Cart Icon Animation */
+.navbar .fa-shopping-bag {
+    transition: all 0.3s ease;
+}
+
+.navbar .fa-shopping-bag:hover {
+    transform: scale(1.1);
+    color: #ff4e00 !important;
+}
+
+/* Search Container */
+.search-container {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1029;
+}
+
+.search-container.show {
+    transform: translateY(0);
+}
+
+.search-input {
+    border: 1px solid #eee;
+    border-radius: 25px;
+    padding: 8px 20px;
+    width: 100%;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #ff4e00;
+    box-shadow: 0 0 0 2px rgba(255, 78, 0, 0.1);
+}
+
+/* Cart Count */
+.cart-count {
+    top: -5px !important;
+    right: -11px !important;
+    height: 20px;
+    min-width: 20px;
+    font-size: 0.7rem;
+    background: linear-gradient(to right, #ff4e00, #f9d423) !important;
+}
+
+/* Added to Cart Toast */
+.added-to-cart-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1100;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.added-to-cart-toast.show {
+    opacity: 1;
+}
+
+.toast-body {
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: linear-gradient(to right, #ff4e00, #f9d423);
+    color: white;
+    box-shadow: 0 3px 10px rgba(255, 78, 0, 0.3);
+}
+
+/* Animations */
+@keyframes highlight {
+    0% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+    50% { box-shadow: 0 0 0 10px rgba(255, 107, 0, 0.3); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+search-container {
+    display: none;
+    position: absolute;
+    top: 70px; /* Height of your navbar */
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 1000;
+    padding: 15px 0;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.search-container.show {
+    display: block;
+}
+
+/* Make sure the close button is clickable */
+.search-close {
+    cursor: pointer;
+}
+/* Premium Orange Theme Styles */
+:root {
+    --primary-orange: #ff6b00;
+    --dark-orange: #e05a00;
+    --light-orange: #ff8c00;
+    --gold-accent: #ffd700;
+    --spice-gradient: linear-gradient(135deg, #ff6b00, #ff8c00, #ffaa00);
+}
+
+/* Product Cards */
+.fruite-item {
+    transition: all 0.3s ease;
+    border: none !important;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    background: white;
+}
+
+.fruite-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--spice-gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.fruite-item:hover::before {
+    transform: scaleX(1);
+}
+
+.fruite-img {
+    transition: all 0.5s ease;
+    height: 200px;
+    object-fit: cover;
+}
+
+.fruite-item:hover .fruite-img {
+    transform: scale(1.05);
+}
+
+.text-white.bg-secondary {
+    background: var(--spice-gradient) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    padding: 0.25rem 0.75rem !important;
+}
+
+/* Radio Buttons */
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + label {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    margin: 0 0.25rem;
+    border-radius: 20px;
+    background: #f5f5f5;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+input[type="radio"]:checked + label {
+    background: var(--primary-orange);
+    color: white;
+    box-shadow: 0 3px 10px rgba(255, 107, 0, 0.3);
+}
+
+/* Price Display */
+.masala-price-view {
+    color: var(--primary-orange) !important;
+    font-size: 1.1rem !important;
+    margin: 1rem 0 !important;
+}
+
+/* Add to Cart Button */
+.btn-border-secondary {
+    background: white;
+    border: 2px solid var(--primary-orange) !important;
+    color: var(--primary-orange) !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1.5rem !important;
+}
+
+.btn-border-secondary:hover {
+    background: var(--spice-gradient) !important;
+    color: white !important;
+    border-color: transparent !important;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2);
+}
+
+/* Animations */
+@keyframes highlight {
+    0% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+    50% { box-shadow: 0 0 0 10px rgba(255, 107, 0, 0.3); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fireIn {
+    0% { 
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+        background: white;
+    }
+    50% {
+        background: linear-gradient(to right, #fff8f0, white);
+    }
+    100% { 
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 30px rgba(255, 107, 0, 0.5);
+    }
+}
+
+@keyframes fireOut {
+    0% { 
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% { 
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+}
+
+/* Modal Styling */
+#cartModal {
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    background: white;
+    border: 2px solid var(--primary-orange);
+    text-align: center;
+    min-width: 300px;
+    max-width: 80%;
+}
+
+#modalMessage {
+    font-weight: 600;
+    color: var(--primary-orange);
+    font-size: 1.1rem;
+}
+
+#modalBackdrop {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Category Pills */
+.nav-pills .nav-link {
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.nav-pills .nav-link.active {
+    background: var(--spice-gradient) !important;
+    color: white !important;
+    border-color: var(--primary-orange);
+    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
+}
+
+.nav-pills .nav-link:not(.active):hover {
+    border-color: var(--primary-orange);
+    color: var(--primary-orange) !important;
+}
+
+/* Section Header */
+.tab-class h1 {
+    position: relative;
+    display: inline-block;
+    color: #333;
+}
+
+.tab-class h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 4px;
+    background: var(--spice-gradient);
+    border-radius: 2px;
+}
+</style>
+
+<!-- Navbar HTML -->
+<div class="container-fluid" id="mainNavbar">
+<div class="container px-0">
+    <nav class="navbar navbar-expand-lg navbar-light py-2" style="height: 70px;">
+        <a href="index.html" class="navbar-brand">
+            <h1 class="display-6">Aromahut</h1>
+        </a>
+        <button class="navbar-toggler py-1 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars" style="color: #ff4e00;"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav mx-auto">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="shop.html" class="nav-item nav-link active">Shop</a>
+                <a href="checkout.html" class="nav-item nav-link">CheckOut</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu m-0 bg-light rounded-0 border-0 shadow">
+                        <a href="cart.html" class="dropdown-item">Cart</a>
+                        <a href="404.html" class="dropdown-item">404 Page</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <div class="d-flex align-items-center">
+                <button class="btn border-0 btn-md-square bg-transparent me-3 search-toggle">
+                    <i class="fas fa-search text-dark"></i>
+                </button>
+                <a href="cart.html" class="position-relative me-3 cart-icon">
+                    <i class="fa fa-shopping-bag fa-lg text-dark"></i>
+                    <span class="cart-count position-absolute rounded-circle d-flex align-items-center justify-content-center text-white px-1">0</span>
+                </a>
+                <a href="#" class="text-dark">
+                    <i class="fas fa-user fa-lg"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- Search Container -->
+
+</div>
+
+<div class="search-container">
+    <div class="container">
+        <div class="input-group">
+            <input type="text" class="form-control search-input" placeholder="Search masalas...">
+            <button class="btn btn-orange">
+                <i class=""></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+    <!-- Fruits Shop Start-->
+    <div class="container-fluid fruite py-5">
+        <div class="container py-5">
+            <div class="tab-class text-center">
+                <div class="row g-4">
+                    <div class="col-lg-4 text-start">
+                        <h1>Our Home made Products</h1>
+                    </div>
+                    <div class="col-lg-8 text-end">
+                        <ul class="nav nav-pills d-inline-flex text-center mb-5">
+                            <li class="nav-item">
+                                <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1">
+                                    <span class="text-dark" style="width: 130px;">All Products</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
+                                    <span class="text-dark" style="width: 130px;">Masala</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
+                                    <span class="text-dark" style="width: 130px;">Spices</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
+                                    <span class="text-dark" style="width: 130px;">Pre-Mix</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-5">
+                                    <span class="text-dark" style="width: 130px;">Health-Drink</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane fade show p-0 active">
+                        <div class="row g-4">
+                            <div class="col-lg-12">
+                                <div class="row g-4">
+                                    <!-- Product 1 - Sambar Podi -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Sambar Podi</h4>
+                                                <input type="radio" name="weight-sambar" id="sambar-podi-100g" checked>
+                                                <label for="sambar-podi-100g">100g</label>
+                                                <input type="radio" name="weight-sambar" id="sambar-podi-250g">
+                                                <label for="sambar-podi-250g">250g</label>
+                                                <input type="radio" name="weight-sambar" id="sambar-podi-500g">
+                                                <label for="sambar-podi-500g">500g</label>
+                                                <input type="radio" name="weight-sambar" id="sambar-podi-1kg">
+                                                <label for="sambar-podi-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹87.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 2 - Kootu Thool -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Kootu Thool</h4>
+                                                <input type="radio" name="weight-kootu" id="kootu-100g" checked>
+                                                <label for="kootu-100g">100g</label>
+                                                <input type="radio" name="weight-kootu" id="kootu-250g">
+                                                <label for="kootu-250g">250g</label>
+                                                <input type="radio" name="weight-kootu" id="kootu-500g">
+                                                <label for="kootu-500g">500g</label>
+                                                <input type="radio" name="weight-kootu" id="kootu-1kg">
+                                                <label for="kootu-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹97.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 3 - Curry Masala Powder -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Curry Masala Powder</h4>
+                                                <input type="radio" name="weight-curry" id="curry-100g" checked>
+                                                <label for="curry-100g">100g</label>
+                                                <input type="radio" name="weight-curry" id="curry-250g">
+                                                <label for="curry-250g">250g</label>
+                                                <input type="radio" name="weight-curry" id="curry-500g">
+                                                <label for="curry-500g">500g</label>
+                                                <input type="radio" name="weight-curry" id="curry-1kg">
+                                                <label for="curry-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹171.00 / 100g</p>
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 4 - Kulambu Milagai Thool -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Kulambu Milagai Thool</h4>
+                                                <input type="radio" name="weight-kulambu" id="kulambu-100g" checked>
+                                                <label for="kulambu-100g">100g</label>
+                                                <input type="radio" name="weight-kulambu" id="kulambu-250g">
+                                                <label for="kulambu-250g">250g</label>
+                                                <input type="radio" name="weight-kulambu" id="kulambu-500g">
+                                                <label for="kulambu-500g">500g</label>
+                                                <input type="radio" name="weight-kulambu" id="kulambu-1kg">
+                                                <label for="kulambu-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹98.00 / 100g</p>
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 5 - Coriander Powder -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Coriander Powder</h4>
+                                                <input type="radio" name="weight-coriander" id="coriander-100g" checked>
+                                                <label for="coriander-100g">100g</label>
+                                                <input type="radio" name="weight-coriander" id="coriander-250g">
+                                                <label for="coriander-250g">250g</label>
+                                                <input type="radio" name="weight-coriander" id="coriander-500g">
+                                                <label for="coriander-500g">500g</label>
+                                                <input type="radio" name="weight-coriander" id="coriander-1kg">
+                                                <label for="coriander-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹70.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 6 - Chilli Powder -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Chilli Powder</h4>
+                                                <input type="radio" name="weight-chilli" id="chilli-100g" checked>
+                                                <label for="chilli-100g">100g</label>
+                                                <input type="radio" name="weight-chilli" id="chilli-250g">
+                                                <label for="chilli-250g">250g</label>
+                                                <input type="radio" name="weight-chilli" id="chilli-500g">
+                                                <label for="chilli-500g">500g</label>
+                                                <input type="radio" name="weight-chilli" id="chilli-1kg">
+                                                <label for="chilli-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹95.00 / 100g</p>
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 7 - Turmeric Powder -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Turmeric Powder</h4>
+                                                <input type="radio" name="weight-turmeric" id="turmeric-100g" checked>
+                                                <label for="turmeric-100g">100g</label>
+                                                <input type="radio" name="weight-turmeric" id="turmeric-250g">
+                                                <label for="turmeric-250g">250g</label>
+                                                <input type="radio" name="weight-turmeric" id="turmeric-500g">
+                                                <label for="turmeric-500g">500g</label>
+                                                <input type="radio" name="weight-turmeric" id="turmeric-1kg">
+                                                <label for="turmeric-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹60.00 / 100g</p>
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 8 - Garam Masala -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Garam Masala</h4>
+                                                <input type="radio" name="weight-garam" id="garam-100g" checked>
+                                                <label for="garam-100g">100g</label>
+                                                <input type="radio" name="weight-garam" id="garam-250g">
+                                                <label for="garam-250g">250g</label>
+                                                <input type="radio" name="weight-garam" id="garam-500g">
+                                                <label for="garam-500g">500g</label>
+                                                <input type="radio" name="weight-garam" id="garam-1kg">
+                                                <label for="garam-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹158.00 / 100g</p>
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 9 - Rasam Podi -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Rasam Podi</h4>
+                                                <input type="radio" name="weight-rasam" id="rasam-100g" checked>
+                                                <label for="rasam-100g">100g</label>
+                                                <input type="radio" name="weight-rasam" id="rasam-250g">
+                                                <label for="rasam-250g">250g</label>
+                                                <input type="radio" name="weight-rasam" id="rasam-500g">
+                                                <label for="rasam-500g">500g</label>
+                                                <input type="radio" name="weight-rasam" id="rasam-1kg">
+                                                <label for="rasam-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹118.00 / 100g</p>
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 10 - Andra Paruppu Podi -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Andra Paruppu Podi</h4>
+                                                <input type="radio" name="weight-paruppu" id="paruppu-100g" checked>
+                                                <label for="paruppu-100g">100g</label>
+                                                <input type="radio" name="weight-paruppu" id="paruppu-250g">
+                                                <label for="paruppu-250g">250g</label>
+                                                <input type="radio" name="weight-paruppu" id="paruppu-500g">
+                                                <label for="paruppu-500g">500g</label>
+                                                <input type="radio" name="weight-paruppu" id="paruppu-1kg">
+                                                <label for="paruppu-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹62.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 11 - Poondu Podi -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Poondu Podi</h4>
+                                                <input type="radio" name="weight-poondu" id="poondu-100g" checked>
+                                                <label for="poondu-100g">100g</label>
+                                                <input type="radio" name="weight-poondu" id="poondu-250g">
+                                                <label for="poondu-250g">250g</label>
+                                                <input type="radio" name="weight-poondu" id="poondu-500g">
+                                                <label for="poondu-500g">500g</label>
+                                                <input type="radio" name="weight-poondu" id="poondu-1kg">
+                                                <label for="poondu-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹96.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 12 - Idili Milagai Podi -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Idili Milagai Podi</h4>
+                                                <input type="radio" name="weight-idli" id="idli-100g" checked>
+                                                <label for="idli-100g">100g</label>
+                                                <input type="radio" name="weight-idli" id="idli-250g">
+                                                <label for="idli-250g">250g</label>
+                                                <input type="radio" name="weight-idli" id="idli-500g">
+                                                <label for="idli-500g">500g</label>
+                                                <input type="radio" name="weight-idli" id="idli-1kg">
+                                                <label for="idli-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹118.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 13 - Chicken Masala -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Chicken Masala</h4>
+                                                <input type="radio" name="weight-chicken" id="chicken-100g" checked>
+                                                <label for="chicken-100g">100g</label>
+                                                <input type="radio" name="weight-chicken" id="chicken-250g">
+                                                <label for="chicken-250g">250g</label>
+                                                <input type="radio" name="weight-chicken" id="chicken-500g">
+                                                <label for="chicken-500g">500g</label>
+                                                <input type="radio" name="weight-chicken" id="chicken-1kg">
+                                                <label for="chicken-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹81.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 14 - Chicken 65 Masala -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Chicken 65 Masala</h4>
+                                                <input type="radio" name="weight-chicken65" id="chicken65-100g" checked>
+                                                <label for="chicken65-100g">100g</label>
+                                                <input type="radio" name="weight-chicken65" id="chicken65-250g">
+                                                <label for="chicken65-250g">250g</label>
+                                                <input type="radio" name="weight-chicken65" id="chicken65-500g">
+                                                <label for="chicken65-500g">500g</label>
+                                                <input type="radio" name="weight-chicken65" id="chicken65-1kg">
+                                                <label for="chicken65-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹56.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 15 - Thalippu Vadagam -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Masala</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Thalippu Vadagam</h4>
+                                                <input type="radio" name="weight-vadagam" id="vadagam-100g" checked>
+                                                <label for="vadagam-100g">100g</label>
+                                                <input type="radio" name="weight-vadagam" id="vadagam-250g">
+                                                <label for="vadagam-250g">250g</label>
+                                                <input type="radio" name="weight-vadagam" id="vadagam-500g">
+                                                <label for="vadagam-500g">500g</label>
+                                                <input type="radio" name="weight-vadagam" id="vadagam-1kg">
+                                                <label for="vadagam-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹100.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 16 - Instant Adai Dosa Mix -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Pre-Mix</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Instant Adai Dosa Mix</h4>
+                                                <input type="radio" name="weight-adai" id="adai-100g" checked>
+                                                <label for="adai-100g">100g</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹188.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 17 - Instant Green Gram Dosa -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Pre-Mix</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Instant Green Gram Dosa</h4>
+                                                <input type="radio" name="weight-greengram" id="greengram-100g" checked>
+                                                <label for="greengram-100g">100g</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹182.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 18 - Rava Dosa Mix -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Pre-Mix</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Rava Dosa Mix</h4>
+                                                <input type="radio" name="weight-rava" id="rava-100g" checked>
+                                                <label for="rava-100g">100g</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹125.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 19 - Instant Rice Upma Mix -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Pre-Mix</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Instant Rice Upma Mix</h4>
+                                                <input type="radio" name="weight-upma" id="upma-100g" checked>
+                                                <label for="upma-100g">100g</label>
+                                                <input type="radio" name="weight-upma" id="upma-250g">
+                                                <label for="upma-250g">250g</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹125.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 20 - Karuppu Ulunthu Premix -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Health Drink</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Karuppu Ulunthu Premix</h4>
+                                                <input type="radio" name="weight-ulunthu" id="ulunthu-100g" checked>
+                                                <label for="ulunthu-100g">100g</label>
+                                                <input type="radio" name="weight-ulunthu" id="ulunthu-250g">
+                                                <label for="ulunthu-250g">250g</label>
+                                                <input type="radio" name="weight-ulunthu" id="ulunthu-500g">
+                                                <label for="ulunthu-500g">500g</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹140.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 21 - Multi Grain Health Mix -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Health Drink</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Multi Grain Health Mix</h4>
+                                                <input type="radio" name="weight-multigrain" id="multigrain-100g" checked>
+                                                <label for="multigrain-100g">100g</label>
+                                                <input type="radio" name="weight-multigrain" id="multigrain-250g">
+                                                <label for="multigrain-250g">250g</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹225.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 22 - Karuppu Kovni Kollu Kanji Mix -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Health Drink</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Karuppu Kovni Kollu Kanji Mix</h4>
+                                                <input type="radio" name="weight-kollu" id="kollu-100g" checked>
+                                                <label for="kollu-100g">100g</label>
+                                                <input type="radio" name="weight-kollu" id="kollu-250g">
+                                                <label for="kollu-250g">250g</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹342.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 23 - Sprouted Ragi Flour -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Health Drink</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Sprouted Ragi Flour</h4>
+                                                <input type="radio" name="weight-ragi" id="ragi-100g" checked>
+                                                <label for="ragi-100g">100g</label>
+                                                <input type="radio" name="weight-ragi" id="ragi-250g">
+                                                <label for="ragi-250g">250g</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹215.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 24 - Sprouted Ragi Milk Powder -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Health Drink</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Sprouted Ragi Milk Powder</h4>
+                                                <input type="radio" name="weight-ragimilk" id="ragimilk-100g" checked>
+                                                <label for="ragimilk-100g">100g</label>
+                                                <input type="radio" name="weight-ragimilk" id="ragimilk-250g">
+                                                <label for="ragimilk-250g">250g</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹225.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 25 - Nalangu Mavu -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Beauty</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Nalangu Mavu</h4>
+                                                <input type="radio" name="weight-nalangu" id="nalangu-100g" checked>
+                                                <label for="nalangu-100g">100g</label>
+                                                <input type="radio" name="weight-nalangu" id="nalangu-250g">
+                                                <label for="nalangu-250g">250g</label>
+                                                <input type="radio" name="weight-nalangu" id="nalangu-500g">
+                                                <label for="nalangu-500g">500g</label>
+                                                <input type="radio" name="weight-nalangu" id="nalangu-1kg">
+                                                <label for="nalangu-1kg">1kg</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹80.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product 26 - Shikakai Hair Wash Powder -->
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="rounded position-relative fruite-item">
+                                            <div class="fruite-img">
+                                                <img src="img/bowlmasala.avif" class="img-fluid w-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 20px; left: 10px;">Beauty</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4 class="py-2">Shikakai Hair Wash Powder</h4>
+                                                <input type="radio" name="weight-shikakai" id="shikakai-100g" checked>
+                                                <label for="shikakai-100g">100g</label>
+                                                <input type="radio" name="weight-shikakai" id="shikakai-250g">
+                                                <label for="shikakai-250g">250g</label>
+                                                <input type="radio" name="weight-shikakai" id="shikakai-500g">
+                                                <label for="shikakai-500g">500g</label>
+                                                <p class="text-dark fs-5 fw-bold mb-0 masala-price-view" style="margin-top: 20px;">₹150.00 / 100g</p> 
+                                                <a class="btn border border-secondary rounded-pill px-3 text-primary mb-2" onclick="cart(event)" style="margin-top: 0px;">
+                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fruits Shop End-->
+
+    <!-- Modal Elements -->
+    <div id="cartModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); z-index: 1000;">
+        <p id="modalMessage" style="margin: 0;"></p>
+    </div>
+    <div id="modalBackdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    <script>
+        // Product prices database
+        const prices = {
+            // Masalas
+            'sambar-podi-100g': 87.00,
+            'sambar-podi-250g': 217.00,
+            'sambar-podi-500g': 435.00,
+            'sambar-podi-1kg': 870.00,
+            'kootu-100g': 97.00,
+            'kootu-250g': 241.00,
+            'kootu-500g': 482.00,
+            'kootu-1kg': 964.00,
+            'curry-100g': 171.00,
+            'curry-250g': 426.00,
+            'curry-500g': 853.00,
+            'curry-1kg': 1705.00,
+            'kulambu-100g': 98.00,
+            'kulambu-250g': 246.00,
+            'kulambu-500g': 491.00,
+            'kulambu-1kg': 982.00,
+            'coriander-100g': 70.00,
+            'coriander-250g': 175.00,
+            'coriander-500g': 350.00,
+            'coriander-1kg': 700.00,
+            'chilli-100g': 95.00,
+            'chilli-250gA': 236.00,
+            'chilli-500g': 472.00,
+            'chilli-1kg': 944.00,
+            'turmeric-100g': 60.00,
+            'turmeric-250g': 150.00,
+            'turmeric-500g': 300.00,
+            'turmeric-1kg': 600.00,
+            'garam-100g': 158.00,
+            'garam-250g': 395.00,
+            'garam-500g': 789.00,
+            'garam-1kg': 1578.00,
+            'rasam-100g': 118.00,
+            'rasam-250g': 295.00,
+            'rasam-500g': 590.00,
+            'rasam-1kg': 1180.00,
+            'paruppu-100g': 62.00,
+            'paruppu-250g': 155.00,
+            'paruppu-500g': 310.00,
+            'paruppu-1kg': 620.00,
+            'poondu-100g': 96.00,
+            'poondu-250g': 240.00,
+            'poondu-500g': 480.00,
+            'poondu-1kg': 960.00,
+            'idli-100g': 118.00,
+            'idli-250g': 295.00,
+            'idli-500g': 590.00,
+            'idli-1kg': 1180.00,
+            'chicken-100g': 81.00,
+            'chicken-250g': 202.00,
+            'chicken-500g': 403.00,
+            'chicken-1kg': 806.00,
+            'chicken65-100g': 56.00,
+            'chicken65-250g': 139.00,
+            'chicken65-500g': 278.00,
+            'chicken65-1kg': 556.00,
+            'vadagam-100g': 100.00,
+            'vadagam-250g': 250.00,
+            'vadagam-500g': 500.00,
+            'vadagam-1kg': 1000.00,
+            
+            // Pre-Mix
+            'adai-100g': 188.00,
+            'greengram-100g': 182.00,
+            'rava-100g': 125.00,
+            'upma-100g': 125.00,
+            'upma-250g': 250.00,
+            
+            // Health Drink
+            'ulunthu-100g': 140.00,
+            'ulunthu-250g': 280.00,
+            'ulunthu-500g': 560.00,
+            'multigrain-100g': 225.00,
+            'multigrain-250g': 450.00,
+            'kollu-100g': 342.00,
+            'kollu-250g': 684.00,
+            'ragi-100g': 215.00,
+            'ragi-250g': 430.00,
+            'ragimilk-100g': 225.00,
+            'ragimilk-250g': 450.00,
+            
+            // Beauty Product
+            'nalangu-100g': 80.00,
+            'nalangu-250g': 160.00,
+            'nalangu-500g': 320.00,
+            'nalangu-1kg': 640.00,
+            'shikakai-100g': 150.00,
+            'shikakai-250g': 300.00,
+            'shikakai-500g': 600.00
+        };
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add event listeners to all radio buttons
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    updatePrice(this);
+                });
+            });
+
+            // Set initial prices
+            document.querySelectorAll('.fruite-item').forEach(item => {
+                const checkedRadio = item.querySelector('input[type="radio"]:checked');
+                if (checkedRadio) {
+                    updatePrice(checkedRadio);
+                }
+            });
+        });
+
+        // Function to update price display
+        function updatePrice(radio) {
+            const productContainer = radio.closest('.fruite-item');
+            const priceElement = productContainer.querySelector('.masala-price-view');
+            const weightId = radio.id;
+            const price = prices[weightId];
+            const weightLabel = radio.nextElementSibling.textContent;
+
+            if (price !== undefined) {
+                priceElement.textContent = `₹${price.toFixed(2)} / ${weightLabel}`;
+            }
+        }
+
+        // Add to cart function
+        function cart(event) {
+            event.preventDefault();
+            const productContainer = event.target.closest('.fruite-item');
+            const name = productContainer.querySelector('h4').textContent;
+            const selectedRadio = productContainer.querySelector('input[type="radio"]:checked');
+            
+            if (!selectedRadio) {
+                showModal('Please select a weight option');
+                return;
+            }
+            
+            const weightId = selectedRadio.id;
+            const price = prices[weightId].toFixed(2);
+            const weightText = selectedRadio.nextElementSibling.textContent;
+
+            const cartItem = {
+                name: name,
+                price: price,
+                weight: weightText,
+                id: weightId,
+                timestamp: new Date().getTime()
+            };
+
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const existingIndex = cartItems.findIndex(item => item.id === weightId);
+            
+            if (existingIndex >= 0) {
+                cartItems[existingIndex] = cartItem;
+            } else {
+                cartItems.push(cartItem);
+            }
+
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            showModal(`${name} (${weightText}) added to cart. Price: ₹${price}`);
+        }
+
+        // Show modal message
+        function showModal(message) {
+            const modal = document.getElementById('cartModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            const modalMessage = document.getElementById('modalMessage');
+
+            modalMessage.textContent = message;
+            modal.style.display = 'block';
+            backdrop.style.display = 'block';
+
+            setTimeout(() => {
+                modal.style.display = 'none';
+                backdrop.style.display = 'none';
+            }, 2000);
+        }
+        
+    </script>
+<script>
+    // Cart Manager with Session Storage
+    class CartManager {
+        constructor() {
+            this.cartKey = 'aromahut_cart';
+            this.loadCart();
+        }
+
+        loadCart() {
+            this.cart = JSON.parse(sessionStorage.getItem(this.cartKey)) || [];
+            this.updateCartCount();
+        }
+
+        saveCart() {
+            sessionStorage.setItem(this.cartKey, JSON.stringify(this.cart));
+            this.updateCartCount();
+        }
+
+        addItem(product) {
+            const existingItem = this.cart.find(item => 
+                item.id === product.id && item.weight === product.weight
+            );
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                this.cart.push({
+                    ...product,
+                    quantity: 1,
+                    addedAt: new Date().toISOString()
+                });
+            }
+
+            this.saveCart();
+            this.showAddedToCart(product.name);
+        }
+
+        getCount() {
+            return this.cart.reduce((total, item) => total + item.quantity, 0);
+        }
+
+        updateCartCount() {
+            document.querySelectorAll('.cart-count').forEach(el => {
+                el.textContent = this.getCount();
+            });
+        }
+
+        showAddedToCart(productName) {
+            const toast = document.createElement('div');
+            toast.className = 'added-to-cart-toast';
+            toast.innerHTML = `
+                <div class="toast-body">
+                    <i class="fas fa-check-circle me-2"></i>
+                    ${productName} added to cart!
+                </div>
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(toast);
+                    }, 300);
+                }, 2000);
+            }, 10);
+        }
+    }
+
+    // Initialize cart manager
+    const cartManager = new CartManager();
+    
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Search toggle functionality
+        const searchToggle = document.querySelector('.search-toggle');
+        const searchContainer = document.querySelector('.search-container');
+        const searchInput = document.querySelector('.search-input');
+        const searchClose = document.querySelector('.search-close');
+        
+        searchToggle.addEventListener('click', function() {
+            searchContainer.classList.toggle('show');
+            if (searchContainer.classList.contains('show')) {
+                searchInput.focus();
+            }
+        });
+        
+        document.addEventListener('click', function(e) {
+        if (!searchContainer.contains(e.target) && e.target !== searchToggle) {
+            searchContainer.classList.remove('show');
+            searchInput.value = '';
+            clearSearchResults();
+            showAllProducts();
+        }
+    });
+        
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            if (query.length > 0) {
+                performSearch(query);
+            } else {
+                clearSearchResults();
+                showAllProducts();
+            }
+        });
+        
+        function performSearch(query) {
+            const products = document.querySelectorAll('.fruite-item');
+            let foundResults = false;
+            
+            products.forEach(product => {
+                const title = product.querySelector('h4').textContent.toLowerCase();
+                const category = product.querySelector('.text-white.bg-secondary').textContent.toLowerCase();
+                
+                if (title.includes(query) || category.includes(query)) {
+                    foundResults = true;
+                    product.style.display = 'block';
+                    product.style.animation = 'highlight 1s';
+                    setTimeout(() => {
+                        product.style.animation = '';
+                    }, 1000);
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+        
+        function clearSearchResults() {
+            // No separate results container in this version
+        }
+        
+        function showAllProducts() {
+            document.querySelectorAll('.fruite-item').forEach(item => {
+                item.style.display = 'block';
+            });
+        }
+        
+        // Category filtering
+        const categoryLinks = document.querySelectorAll('.nav-pills .nav-link');
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                const category = this.querySelector('span').textContent.trim().toLowerCase();
+                
+                // Reset all active states
+                categoryLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                if (category === 'all products') {
+                    showAllProducts();
+                    return;
+                }
+                
+                document.querySelectorAll('.fruite-item').forEach(item => {
+                    const itemCategory = item.querySelector('.text-white.bg-secondary').textContent.toLowerCase();
+                    if (itemCategory.includes(category)) {
+                        item.style.display = 'block';
+                        item.style.animation = 'pulse 0.5s';
+                        setTimeout(() => {
+                            item.style.animation = '';
+                        }, 500);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Cart functionality
+        window.cart = function(event) {
+            event.preventDefault();
+            const productCard = event.currentTarget.closest('.fruite-item');
+            const productName = productCard.querySelector('h4').textContent;
+            const selectedWeight = productCard.querySelector('input[type="radio"]:checked').id.split('-').pop();
+            const priceText = productCard.querySelector('.masala-price-view').textContent;
+            const price = parseFloat(priceText.match(/₹(\d+\.\d+)/)[1]);
+            const productId = productName.toLowerCase().replace(/\s+/g, '-') + '-' + selectedWeight;
+            const image = productCard.querySelector('img').src;
+            
+            cartManager.addItem({
+                id: productId,
+                name: productName,
+                weight: selectedWeight,
+                price: price,
+                image: image
+            });
+        }
+    });
+
+    
+
+    </script>
+    
+</body>
+</html>
