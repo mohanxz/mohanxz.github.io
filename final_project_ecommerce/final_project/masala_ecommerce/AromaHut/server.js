@@ -11,39 +11,44 @@ const Order = require('./models/Order'); // Import the Order model
 
 const app = express();
 app.use(express.json()); // Middleware to parse JSON bodies
-app.use(cors()); // Enable CORS (restrict origins in production)
 
-const MONGO_URI = 'mongodb+srv://vr237585:2TXMJqRBKt8ukpTF@cluster123.c8r1h.mongodb.net/?retryWrites=true&w=majority&appName=Cluster123';
+// 🔐 Enable CORS for frontend domain
+app.use(cors({
+  origin: "https://mohanxz.github.io"
+}));
+
+// ✅ MongoDB Connection
+const MONGO_URI = process.env.MONGO_URI || 'your-mongo-uri-here';
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log("✅ MongoDB Atlas Connected Successfully!"))
   .catch(err => console.log("❌ MongoDB Connection Error:", err));
 
+// ✅ Razorpay setup with env vars
 const razorpay = new Razorpay({
-  key_id: "rzp_live_PJ1rolbjunHAfs", // Your actual test Key ID
-  key_secret: "QZ2dI8FrB8DkkuQYWDhBCcCk", // Your actual test Key Secret
+  key_id: process.env.RAZORPAY_KEY_ID || "rzp_test_123",
+  key_secret: process.env.RAZORPAY_KEY_SECRET || "your_key_secret"
 });
 
+// 🔁 For debug/demo: Returns total amount
 app.post("/api/total", (req, res) => {
-  const { totalAmount } = req.body; // Extract totalAmount from request body
-  console.log("Received totalAmount:", totalAmount); // Debug log
-
-  // Respond with the received totalAmount
+  const { totalAmount } = req.body;
+  console.log("Received totalAmount:", totalAmount);
   res.json({ message: "Total amount received", totalAmount });
 });
 
-// Route to create an order
+// 🛒 Create Razorpay Order
 app.post("/create-order", (req, res) => {
-  const { amount } = req.body; // Get the amount from the client request
+  const { amount } = req.body;
 
   if (!amount || isNaN(amount) || amount <= 0) {
     return res.status(400).json({ error: "Invalid amount" });
   }
 
   const options = {
-    amount: parseInt(amount), // Convert to paise (Razorpay expects amount in smallest unit)
+    amount: parseInt(amount),
     currency: "INR",
-    receipt: `receipt_order_${Date.now()}`, // Generate unique receipt ID
+    receipt: `receipt_order_${Date.now()}`
   };
 
   razorpay.orders.create(options, (err, order) => {
@@ -55,43 +60,18 @@ app.post("/create-order", (req, res) => {
   });
 });
 
-// Route to verify payment
+// ✅ Payment verification route
 app.post("/verify-payment", async (req, res) => {
-  const { 
-    razorpay_order_id, 
-    razorpay_payment_id, 
-    razorpay_signature,
-    buyerName, 
-    buyerEmail, 
-    buyerPhone, 
-    buyerAddress,
-    productName, 
-    productQuantity, 
-    productPrice  
+  const {
+    razorpay_order_id, razorpay_payment_id, razorpay_signature,
+    buyerName, buyerEmail, buyerPhone, buyerAddress,
+    productName, productQuantity, productPrice
   } = req.body;
 
-  console.log("Request Body:", req.body); // Debug: Check what's being sent
-
-  // Validate required fields
-  if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature || 
-      !buyerName || !buyerEmail || !buyerPhone || !buyerAddress || 
+  if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature ||
+      !buyerName || !buyerEmail || !buyerPhone || !buyerAddress ||
       !productName || !productQuantity || !productPrice) {
-    return res.status(400).json({
-      status: "failed",
-      error: "Missing required fields",
-      missing: {
-        razorpay_order_id: !razorpay_order_id,
-        razorpay_payment_id: !razorpay_payment_id,
-        razorpay_signature: !razorpay_signature,
-        buyerName: !buyerName,
-        buyerEmail: !buyerEmail,
-        buyerPhone: !buyerPhone,
-        buyerAddress: !buyerAddress,
-        productName: !productName,
-        productQuantity: !productQuantity,
-        productPrice: !productPrice
-      }
-    });
+    return res.status(400).json({ status: "failed", error: "Missing required fields" });
   }
 
   const hmac = crypto.createHmac("sha256", razorpay.key_secret);
@@ -100,27 +80,15 @@ app.post("/verify-payment", async (req, res) => {
 
   if (generatedSignature === razorpay_signature) {
     try {
-      // Parse buyerAddress (e.g., "123 Main St, Chennai, 600001")
-      const addressParts = buyerAddress.split(", ");
-      const address = addressParts[0]; // First part is the street address
-      const town = addressParts[1]; // Second part is the town/city
-      const postalCode = addressParts[2]; // Third part is the postal code
-
+      const [address, town, postalCode] = buyerAddress.split(", ");
       const order = new Order({
-        buyerName,
-        buyerEmail,
-        buyerPhone,
-        buyerAddress: address,
-        buyerTown: town,
-        buyerPostalCode: postalCode,
-        productName,
-        productPrice,
-        productQuantity,
+        buyerName, buyerEmail, buyerPhone,
+        buyerAddress: address, buyerTown: town, buyerPostalCode: postalCode,
+        productName, productPrice, productQuantity,
         razorpayOrderId: razorpay_order_id,
         razorpayPaymentId: razorpay_payment_id
       });
 
-      console.log("Order Before Save:", order); // Debug: Check the order before saving
       await order.save();
       await sendOrderEmail(order);
 
@@ -134,11 +102,9 @@ app.post("/verify-payment", async (req, res) => {
   }
 });
 
-
-// ✅ **Send Order Confirmation Email**
+// 📧 Send order confirmation email
 async function sendOrderEmail(order) {
   try {
-    console.log("Order in sendOrderEmail:", order); // Debug: Check the order object
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -151,7 +117,7 @@ async function sendOrderEmail(order) {
       from: process.env.EMAIL_USER || "prasannavenkatesh652@gmail.com",
       to: `${order.buyerEmail}, your-email@gmail.com`,
       subject: "Order Confirmation - AromaHut",
-      text: `Thank you for your purchase!\n\nOrder Details:\nProduct: ${order.productName || "N/A"}\nQuantity: ${order.productQuantity || "N/A"}\nTotal: ₹${order.productPrice || "N/A"}\n\nShipping To:\n${order.buyerName}\n${order.buyerAddress}, ${order.buyerTown}, ${order.buyerPostalCode}`
+      text: `Thank you for your purchase!\n\nOrder Details:\nProduct: ${order.productName}\nQuantity: ${order.productQuantity}\nTotal: ₹${order.productPrice}\n\nShipping To:\n${order.buyerName}\n${order.buyerAddress}, ${order.buyerTown}, ${order.buyerPostalCode}`
     };
 
     await transporter.sendMail(mailOptions);
@@ -162,8 +128,7 @@ async function sendOrderEmail(order) {
   }
 }
 
-
-// Start the server
+// 🚀 Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
