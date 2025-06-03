@@ -494,337 +494,340 @@ td.qty {
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
   
-  <script>
-    let total;
-  
-    $(document).ready(function () {
-      // Initialize form validation
-      initFormValidation();
-      
-      // Load cart items
-      updateCartItems();
-      updateSubtotal();
-      updateTotal();
-    });
-    
-    function initFormValidation() {
-      // Validate form on submit
-      $('#billing-form').on('submit', function(e) {
-        e.preventDefault();
-        if (validateForm()) {
-          processPayment();
-        }
-      });
-      
-      // Real-time validation
-      $('input[required]').on('blur', function() {
-        validateField($(this));
-      });
-    }
-    
-    function validateField(field) {
-      const value = field.val().trim();
-      const feedback = field.next('.invalid-feedback');
-      
-      if (!value) {
-        field.addClass('is-invalid');
-        return false;
-      }
-      
-      // Special validation for email
-      if (field.attr('type') === 'email' && !isValidEmail(value)) {
-        field.addClass('is-invalid');
-        feedback.text('Please enter a valid email address');
-        return false;
-      }
-      
-      // Special validation for phone
-      if (field.attr('name') === 'phone-no' && !isValidPhone(value)) {
-        field.addClass('is-invalid');
-        feedback.text('Please enter a valid 10-digit phone number');
-        return false;
-      }
-      
-      field.removeClass('is-invalid');
-      return true;
-    }
-    
-    function validateForm() {
-      let isValid = true;
-      let firstInvalidField = null;
-      
-      $('input[required]').each(function() {
-        if (!validateField($(this))) {
-          isValid = false;
-          if (!firstInvalidField) {
-            firstInvalidField = $(this);
-          }
-        }
-      });
-      
-      // Scroll to first invalid field if any
-      if (!isValid && firstInvalidField) {
-        $('html, body').animate({
-          scrollTop: firstInvalidField.offset().top - 100
-        }, 500);
-        
-        setTimeout(() => {
-          firstInvalidField.focus();
-        }, 500);
-      }
-      
-      return isValid;
-    }
-    
-    function isValidEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-    
-    function isValidPhone(phone) {
-      return /^\d{10}$/.test(phone);
-    }
-  
-    function updateCartItems() {
-      const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-      const cartContainer = $("#cart-items");
-  
-      if (cartContainer.length) {
-        cartContainer.empty();
-        
-        if (cartItems.length === 0) {
-          cartContainer.append('<tr><td colspan="5" class="text-center py-4">Your cart is empty</td></tr>');
-          return;
-        }
-        
-        cartItems.forEach((item, index) => {
-          item.pricePerUnit = item.pricePerUnit || parseFloat(item.price.replace("₹", "").trim());
-          const itemRow = $(`
-            <tr>
-              <td data-label="Product" class="text-dark">${item.name}</td>
-              <td data-label="Weight"  class="text-dark">${item.weight}</td>
-              <td data-label="Qty">
-                <div class="quantity-control">
-                  <button onclick="changeQuantity(${index}, -1) ">-</button>
-                  <span class="text-dark" id="quantity-${index}">${item.quantity || "1"}</span>
-                  <button onclick="changeQuantity(${index}, 1)" >+</button>
-                </div>
-              </td>
-              <td data-label="Price"  class="text-dark"id="price-${index}">₹${(item.pricePerUnit * (item.quantity || 1)).toFixed(2)}</td>
-              <td><i class="fas fa-trash-alt remove-btn text-danger"  data-index="${index}"></i></td>
-            </tr>
-          `);
-          cartContainer.append(itemRow);
-        });
-  
-        $("#cart-items").on("click", ".fa-trash-alt", function() {
-          const index = $(this).data("index");
-          const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-          cartItems.splice(index, 1);
-          localStorage.setItem("cartItems", JSON.stringify(cartItems));
-          updateCartItems();
-          updateSubtotal();
-          updateTotal();
-        });
-      }
-    }
-  
-    function updateSubtotal() {
-      const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-      total = 0;
-      cartItems.forEach((item) => {
-        const price = parseFloat(item.price.replace("₹", ""));
-        const quantity = item.quantity || 1;
-        total += price * quantity;
-      });
-      $(".subtotal").text(`₹${total.toFixed(2)}`);
-      return total;
-    }
-  
-    function updateTotal() {
-      const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-      total = 0;
-      cartItems.forEach((item) => {
-        const price = parseFloat(item.price.replace("₹", ""));
-        const quantity = item.quantity || 1;
-        total += price * quantity;
-      });
-  
-      const shipping = 2.00; // Fixed shipping cost
-      total += shipping;
-  
-      localStorage.setItem("total", total.toFixed(2));
-      $(".Total").text(`₹${total.toFixed(2)}`);
-      $(".shipping").text(`₹${shipping.toFixed(2)}`);
-      
-      // Disable checkout button if cart is empty
-      if (cartItems.length === 0) {
-        $("#rzp-button").prop("disabled", true).addClass("disabled");
-      } else {
-        $("#rzp-button").prop("disabled", false).removeClass("disabled");
-      }
-      
-      return total;
-    }
-  
-    window.changeQuantity = function(index, change) {
-      const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-      cartItems[index].quantity = (cartItems[index].quantity || 1) + change;
-      
-      // Ensure quantity doesn't go below 1
-      if (cartItems[index].quantity < 1) {
-        cartItems[index].quantity = 1;
-      }
-      
-      localStorage.setItem("cartItems", JSON.stringify(cartItems));
-      $(`#quantity-${index}`).text(cartItems[index].quantity);
-  
-      const pricePerUnit = cartItems[index].pricePerUnit || parseFloat(cartItems[index].price.replace("₹", "").trim());
-      const newPrice = pricePerUnit * cartItems[index].quantity;
-      $(`#price-${index}`).text(`₹${newPrice.toFixed(2)}`);
-  
-      updateSubtotal();
-      updateTotal();
-    };
-    
-    function processPayment() {
-      // Show loading spinner
-      $('#spinner').addClass('show');
-      
-      // Get buyer details
-      const firstName = $('input[name="first-name"]').val().trim();
-      const lastName = $('input[name="last-name"]').val().trim();
-      const email = $('input[name="email-id"]').val().trim();
-      const phone = $('input[name="phone-no"]').val().trim();
-      const address = $('input[name="address"]').val().trim();
-      const city = $('input[name="town-city"]').val().trim();
-      const postalCode = $('input[name="postcode"]').val().trim();
-      const state = $('input[name="state"]').val().trim();
-      
-      // Combine address details
-      const fullAddress = `${address}, ${city}, ${postalCode}, ${state}`;
-      
-      // Get total from localStorage (includes shipping)
-      const totalAmount = parseFloat(localStorage.getItem("total")) || 0;
-      const amountInPaise = Math.round(totalAmount * 100); // Convert to paise
-      
-      // Get cart items
-      const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-      
-      // Prepare order data
-      const orderData = {
-        amount: amountInPaise,
-        currency: "INR",
-        buyer: {
-          name: `${firstName} ${lastName}`,
-          email: email,
-          phone: phone,
-          address: fullAddress
-        },
-        items: cartItems.map(item => ({
-          name: item.name,
-          weight: item.weight,
-          quantity: item.quantity || 1,
-          price: parseFloat(item.price.replace("₹", ""))
-        }))
-      };
-      
-      // Create order with backend
-      fetch("http://localhost:10000/create-order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ amount: amountInPaise }),
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(order => {
-        // Initialize Razorpay
-        const options = {
-          key: "rzp_live_PJ1rolbjunHAfs",
-          amount: order.amount,
-          currency: "INR",
-          name: "Aromahut",
-          description: "Order Payment",
-          image: "https://via.placeholder.com/150",
-          order_id: order.id,
-          handler: function(response) {
-            handlePaymentSuccess(response, orderData);
-          },
-          prefill: {
-            name: orderData.buyer.name,
-            email: orderData.buyer.email,
-            contact: orderData.buyer.phone
-          },
-          notes: {
-            address: orderData.buyer.address
-          },
-          theme: {
-            color: "#ff6b00"
-          }
-        };
-        
-        const rzp1 = new Razorpay(options);
-        rzp1.open();
-        
-        // Hide spinner when Razorpay opens
-        $('#spinner').removeClass('show');
-      })
-      .catch(error => {
-        console.error("Error creating order:", error);
-        alert("There was an error processing your payment. Please try again.");
-        $('#spinner').removeClass('show');
-      });
-    }
-    
-    function handlePaymentSuccess(response, orderData) {
-      // Prepare payment verification data
-      const paymentData = {
-        razorpay_order_id: response.razorpay_order_id,
-        razorpay_payment_id: response.razorpay_payment_id,
-        razorpay_signature: response.razorpay_signature,
-        ...orderData
-      };
-      
-      // Verify payment with backend
-      fetch("http://localhost:5000/verify-payment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(paymentData),
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === "success") {
-          // Clear cart on successful payment
-          localStorage.removeItem("cartItems");
-          localStorage.removeItem("total");
-          
-          // Redirect to thank you page
-          window.location.href = "greetings.html";
-        } else {
-             window.location.href = "greetings.html";
+<script>
+  let total;
 
-        }
-      })
-      .catch(error => {
-        console.error("Error verifying payment:", error);
-        alert("There was an error verifying your payment. Please contact support.");
-      });
-    }
+  // Put your Render backend URL here
+  const API_BASE_URL = "https://aromahut-backend.onrender.com";
+
+  $(document).ready(function () {
+    // Initialize form validation
+    initFormValidation();
     
-    // Attach click handler to payment button
-    $("#rzp-button").click(function(e) {
+    // Load cart items
+    updateCartItems();
+    updateSubtotal();
+    updateTotal();
+  });
+  
+  function initFormValidation() {
+    // Validate form on submit
+    $('#billing-form').on('submit', function(e) {
       e.preventDefault();
       if (validateForm()) {
         processPayment();
       }
     });
-  </script>
+    
+    // Real-time validation
+    $('input[required]').on('blur', function() {
+      validateField($(this));
+    });
+  }
+  
+  function validateField(field) {
+    const value = field.val().trim();
+    const feedback = field.next('.invalid-feedback');
+    
+    if (!value) {
+      field.addClass('is-invalid');
+      return false;
+    }
+    
+    // Special validation for email
+    if (field.attr('type') === 'email' && !isValidEmail(value)) {
+      field.addClass('is-invalid');
+      feedback.text('Please enter a valid email address');
+      return false;
+    }
+    
+    // Special validation for phone
+    if (field.attr('name') === 'phone-no' && !isValidPhone(value)) {
+      field.addClass('is-invalid');
+      feedback.text('Please enter a valid 10-digit phone number');
+      return false;
+    }
+    
+    field.removeClass('is-invalid');
+    return true;
+  }
+  
+  function validateForm() {
+    let isValid = true;
+    let firstInvalidField = null;
+    
+    $('input[required]').each(function() {
+      if (!validateField($(this))) {
+        isValid = false;
+        if (!firstInvalidField) {
+          firstInvalidField = $(this);
+        }
+      }
+    });
+    
+    // Scroll to first invalid field if any
+    if (!isValid && firstInvalidField) {
+      $('html, body').animate({
+        scrollTop: firstInvalidField.offset().top - 100
+      }, 500);
+      
+      setTimeout(() => {
+        firstInvalidField.focus();
+      }, 500);
+    }
+    
+    return isValid;
+  }
+  
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+  
+  function isValidPhone(phone) {
+    return /^\d{10}$/.test(phone);
+  }
+
+  function updateCartItems() {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const cartContainer = $("#cart-items");
+
+    if (cartContainer.length) {
+      cartContainer.empty();
+      
+      if (cartItems.length === 0) {
+        cartContainer.append('<tr><td colspan="5" class="text-center py-4">Your cart is empty</td></tr>');
+        return;
+      }
+      
+      cartItems.forEach((item, index) => {
+        item.pricePerUnit = item.pricePerUnit || parseFloat(item.price.replace("₹", "").trim());
+        const itemRow = $(`
+          <tr>
+            <td data-label="Product" class="text-dark">${item.name}</td>
+            <td data-label="Weight"  class="text-dark">${item.weight}</td>
+            <td data-label="Qty">
+              <div class="quantity-control">
+                <button onclick="changeQuantity(${index}, -1) ">-</button>
+                <span class="text-dark" id="quantity-${index}">${item.quantity || "1"}</span>
+                <button onclick="changeQuantity(${index}, 1)" >+</button>
+              </div>
+            </td>
+            <td data-label="Price"  class="text-dark"id="price-${index}">₹${(item.pricePerUnit * (item.quantity || 1)).toFixed(2)}</td>
+            <td><i class="fas fa-trash-alt remove-btn text-danger"  data-index="${index}"></i></td>
+          </tr>
+        `);
+        cartContainer.append(itemRow);
+      });
+
+      $("#cart-items").on("click", ".fa-trash-alt", function() {
+        const index = $(this).data("index");
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        cartItems.splice(index, 1);
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        updateCartItems();
+        updateSubtotal();
+        updateTotal();
+      });
+    }
+  }
+
+  function updateSubtotal() {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    total = 0;
+    cartItems.forEach((item) => {
+      const price = parseFloat(item.price.replace("₹", ""));
+      const quantity = item.quantity || 1;
+      total += price * quantity;
+    });
+    $(".subtotal").text(`₹${total.toFixed(2)}`);
+    return total;
+  }
+
+  function updateTotal() {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    total = 0;
+    cartItems.forEach((item) => {
+      const price = parseFloat(item.price.replace("₹", ""));
+      const quantity = item.quantity || 1;
+      total += price * quantity;
+    });
+
+    const shipping = 2.00; // Fixed shipping cost
+    total += shipping;
+
+    localStorage.setItem("total", total.toFixed(2));
+    $(".Total").text(`₹${total.toFixed(2)}`);
+    $(".shipping").text(`₹${shipping.toFixed(2)}`);
+    
+    // Disable checkout button if cart is empty
+    if (cartItems.length === 0) {
+      $("#rzp-button").prop("disabled", true).addClass("disabled");
+    } else {
+      $("#rzp-button").prop("disabled", false).removeClass("disabled");
+    }
+    
+    return total;
+  }
+
+  window.changeQuantity = function(index, change) {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    cartItems[index].quantity = (cartItems[index].quantity || 1) + change;
+    
+    // Ensure quantity doesn't go below 1
+    if (cartItems[index].quantity < 1) {
+      cartItems[index].quantity = 1;
+    }
+    
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    $(`#quantity-${index}`).text(cartItems[index].quantity);
+
+    const pricePerUnit = cartItems[index].pricePerUnit || parseFloat(cartItems[index].price.replace("₹", "").trim());
+    const newPrice = pricePerUnit * cartItems[index].quantity;
+    $(`#price-${index}`).text(`₹${newPrice.toFixed(2)}`);
+
+    updateSubtotal();
+    updateTotal();
+  };
+  
+  function processPayment() {
+    // Show loading spinner
+    $('#spinner').addClass('show');
+    
+    // Get buyer details
+    const firstName = $('input[name="first-name"]').val().trim();
+    const lastName = $('input[name="last-name"]').val().trim();
+    const email = $('input[name="email-id"]').val().trim();
+    const phone = $('input[name="phone-no"]').val().trim();
+    const address = $('input[name="address"]').val().trim();
+    const city = $('input[name="town-city"]').val().trim();
+    const postalCode = $('input[name="postcode"]').val().trim();
+    const state = $('input[name="state"]').val().trim();
+    
+    // Combine address details
+    const fullAddress = `${address}, ${city}, ${postalCode}, ${state}`;
+    
+    // Get total from localStorage (includes shipping)
+    const totalAmount = parseFloat(localStorage.getItem("total")) || 0;
+    const amountInPaise = Math.round(totalAmount * 100); // Convert to paise
+    
+    // Get cart items
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    
+    // Prepare order data
+    const orderData = {
+      amount: amountInPaise,
+      currency: "INR",
+      buyer: {
+        name: `${firstName} ${lastName}`,
+        email: email,
+        phone: phone,
+        address: fullAddress
+      },
+      items: cartItems.map(item => ({
+        name: item.name,
+        weight: item.weight,
+        quantity: item.quantity || 1,
+        price: parseFloat(item.price.replace("₹", ""))
+      }))
+    };
+    
+    // Create order with backend
+    fetch(`${API_BASE_URL}/create-order`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ amount: amountInPaise }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(order => {
+      // Initialize Razorpay
+      const options = {
+        key: "rzp_live_PJ1rolbjunHAfs",
+        amount: order.amount,
+        currency: "INR",
+        name: "Aromahut",
+        description: "Order Payment",
+        image: "https://via.placeholder.com/150",
+        order_id: order.id,
+        handler: function(response) {
+          handlePaymentSuccess(response, orderData);
+        },
+        prefill: {
+          name: orderData.buyer.name,
+          email: orderData.buyer.email,
+          contact: orderData.buyer.phone
+        },
+        notes: {
+          address: orderData.buyer.address
+        },
+        theme: {
+          color: "#ff6b00"
+        }
+      };
+      
+      const rzp1 = new Razorpay(options);
+      rzp1.open();
+      
+      // Hide spinner when Razorpay opens
+      $('#spinner').removeClass('show');
+    })
+    .catch(error => {
+      console.error("Error creating order:", error);
+      alert("There was an error processing your payment. Please try again.");
+      $('#spinner').removeClass('show');
+    });
+  }
+  
+  function handlePaymentSuccess(response, orderData) {
+    // Prepare payment verification data
+    const paymentData = {
+      razorpay_order_id: response.razorpay_order_id,
+      razorpay_payment_id: response.razorpay_payment_id,
+      razorpay_signature: response.razorpay_signature,
+      ...orderData
+    };
+    
+    // Verify payment with backend
+    fetch(`${API_BASE_URL}/verify-payment`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(paymentData),
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "success") {
+        // Clear cart on successful payment
+        localStorage.removeItem("cartItems");
+        localStorage.removeItem("total");
+        
+        // Redirect to thank you page
+        window.location.href = "greetings.html";
+      } else {
+           window.location.href = "greetings.html";
+      }
+    })
+    .catch(error => {
+      console.error("Error verifying payment:", error);
+      alert("There was an error verifying your payment. Please contact support.");
+    });
+  }
+  
+  // Attach click handler to payment button
+  $("#rzp-button").click(function(e) {
+    e.preventDefault();
+    if (validateForm()) {
+      processPayment();
+    }
+  });
+</script>
+
 </body>
 </html>
