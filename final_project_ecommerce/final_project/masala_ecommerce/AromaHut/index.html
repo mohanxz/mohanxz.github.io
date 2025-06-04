@@ -608,55 +608,85 @@ input[type="radio"]:checked + label {
     }
   }
 
+  @media (max-width: 992px) {
+    #mainNavbar {
+        height: 90px;
+        background-color: #ffffff !important;
+    }
+
+    .navbar-collapse {
+        background-color: #ffffff !important;
+    }
+
+    body {
+        padding-top: 90px;
+    }
+}
+
+
 </style>
 <!-- Navbar HTML -->
 <div class="container-fluid" id="mainNavbar">
-<div class="container px-0">
+  <div class="container px-0">
     <nav class="navbar navbar-expand-lg navbar-light py-2" style="height: 70px;">
-            <a href="index.html" class="navbar-brand d-flex align-items-center">
-                <img src="img/aromahutlogo.png" alt="Logo" style="height: 90px;">
-                <h1 class="display-6 m-0 me-2">Aromahut</h1>
-            </a>
-            
-        <button class="navbar-toggler py-1 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="fa fa-bars" style="color: #ff4e00;"></span>
+      <a href="index.html" class="navbar-brand d-flex align-items-center">
+        <img src="img/aromahutlogo.png" alt="Logo" style="height: 90px;">
+        <h1 class="display-6 m-0 me-2">Aromahut</h1>
+      </a>
+
+      <!-- Mobile-first icons BEFORE hamburger -->
+      <div class="d-lg-none d-flex align-items-center ms-auto me-2">
+        <button class="btn border-0 btn-md-square bg-transparent me-2 search-toggle">
+          <i class="fas fa-search text-dark"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="shop.html" class="nav-item nav-link active">Shop</a>
-                <a href="checkout.html" class="nav-item nav-link">CheckOut</a>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
-            <div class="d-flex align-items-center">
-                <button class="btn border-0 btn-md-square bg-transparent me-3 search-toggle">
-                    <i class="fas fa-search text-dark"></i>
-                </button>
-                <a href="cart.html" class="position-relative me-3 cart-icon">
-                    <i class="fa fa-shopping-bag fa-lg text-dark"></i>
-                    <span class="cart-count position-absolute rounded-circle d-flex align-items-center justify-content-center text-white px-1">0</span>
-                </a>
-                <a href="#" class="text-dark">
-                    <i class="fas fa-user fa-lg"></i>
-                </a>
-            </div>
+        <a href="cart.html" class="position-relative me-2 cart-icon">
+          <i class="fa fa-shopping-bag fa-lg text-dark"></i>
+          <span class="cart-count position-absolute rounded-circle d-flex align-items-center justify-content-center text-white px-1">0</span>
+        </a>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="navbar-toggler py-1 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="fa fa-bars" style="color: #ff4e00;"></span>
+      </button>
+
+      <!-- Collapsible Content -->
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mx-auto">
+          <a href="index.html" class="nav-item nav-link active">Home</a>
+          <a href="about.html" class="nav-item nav-link ">About us</a>
+          <a href="checkout.html" class="nav-item nav-link">CheckOut</a>
+          <a href="contact.html" class="nav-item nav-link">Contact</a>
         </div>
+
+        <!-- Desktop Icons (visible only on lg and up) -->
+        <div class="d-none d-lg-flex align-items-center">
+          <button class="btn border-0 btn-md-square bg-transparent me-3 search-toggle">
+            <i class="fas fa-search text-dark"></i>
+          </button>
+          <a href="cart.html" class="position-relative me-3 cart-icon">
+            <i class="fa fa-shopping-bag fa-lg text-dark"></i>
+            <span class="cart-count position-absolute rounded-circle d-flex align-items-center justify-content-center text-white px-1">0</span>
+          </a>
+          <a href="#" class="text-dark">
+            <i class="fas fa-user fa-lg"></i>
+          </a>
+        </div>
+      </div>
     </nav>
+  </div>
 </div>
 
 <!-- Search Container -->
-
-</div>
-
-<div class="search-container">
-    <div class="container">
-        <div class="input-group">
-            <input type="text" class="form-control search-input" placeholder="Search our products...">
-            <button class="btn btn-orange search-close">
-                <i class="fas fa-times"></i> <!-- Added the close icon -->
-            </button>
-        </div>
+<div class="search-container mt-2">
+  <div class="container">
+    <div class="input-group">
+      <input type="text" class="form-control search-input" placeholder="Search our products...">
+      <button class="btn btn-orange search-close">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
+  </div>
 </div>
 
 
@@ -1412,7 +1442,7 @@ input[type="radio"]:checked + label {
                 <h5 class="text-warning mb-4">Quick Links</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-                    <li class="mb-2"><a href="shop.html" class="text-white text-decoration-none">Shop</a></li>
+                    <li class="mb-2"><a href="about.html" class="text-white text-decoration-none">Shop</a></li>
                     <li class="mb-2"><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
                     <li class="mb-2"><a href="blog.html" class="text-white text-decoration-none">Recipes</a></li>
                     <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
@@ -1699,20 +1729,22 @@ input[type="radio"]:checked + label {
     
         // Search functionality
         function setupSearch() {
-            const searchToggle = document.querySelector('.search-toggle');
+            const searchToggles = document.querySelectorAll('.search-toggle');
             const searchContainer = document.querySelector('.search-container');
             const searchInput = document.querySelector('.search-input');
             const searchClose = document.querySelector('.search-close');
             const products = document.querySelectorAll('.fruite-item');
             
-            if (searchToggle) {
-                searchToggle.addEventListener('click', function() {
-                    searchContainer.classList.toggle('show');
-                    if (searchContainer.classList.contains('show')) {
-                        searchInput.focus();
-                    }
-                });
-            }
+         
+            searchToggles.forEach(toggle => {
+    toggle.addEventListener('click', function () {
+        searchContainer.classList.toggle('show');
+        if (searchContainer.classList.contains('show')) {
+            searchInput.focus();
+        }
+    });
+});
+
             
             if (searchClose) {
                 searchClose.addEventListener('click', function() {

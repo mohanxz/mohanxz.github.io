@@ -214,9 +214,8 @@
     
     /* Checkout Button */
 .checkout-btn {
-  background: white;
   border: 2px solid var(--primary-blue) !important;
-  color: var(--primary-blue) !important;
+  color: var(--light-gray) !important;
   font-weight: 600;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
@@ -228,9 +227,56 @@
   margin-top: 20px;
   position: relative;
   overflow: hidden;
+    background: var(--trust-gradient) !important;
+
 }
 
 .checkout-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+
+  transform: skewX(-20deg);
+  transition: all 0.5s ease;
+}
+
+.checkout-btn:hover::before {
+  left: 125%;
+}
+
+.checkout-btn:hover {
+  background: var(--trust-gradient) !important;
+  color: white !important;
+  border-color: transparent !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(31, 117, 254, 0.3);
+}
+.back-home-btn {
+  background: white;
+  border: 2px solid var(--primary-orange) !important;
+  color: var(--primary-orange) !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  padding: 12px 30px !important;
+  border-radius: 50px !important;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  overflow: hidden;
+  margin-top: 10px;
+  
+  /* New positioning */
+  position: absolute;
+  top: 0;
+  right: 30px;
+  z-index: 1;
+}
+
+/* Shine effect */
+.back-home-btn::before {
   content: "";
   position: absolute;
   top: 0;
@@ -247,16 +293,16 @@
   transition: all 0.5s ease;
 }
 
-.checkout-btn:hover::before {
+.back-home-btn:hover::before {
   left: 125%;
 }
 
-.checkout-btn:hover {
-  background: var(--trust-gradient) !important;
+.back-home-btn:hover {
+  background: var(--spice-gradient) !important;
   color: white !important;
   border-color: transparent !important;
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(31, 117, 254, 0.3);
+  box-shadow: 0 10px 20px rgba(255, 107, 0, 0.3);
 }
 
 /* Trust Message */
@@ -292,6 +338,7 @@
       height: calc(100vh - 200px);
       overflow-y: auto;
     }
+    
     
     .cart-summary-container {
       position: sticky;
@@ -364,11 +411,12 @@ td.qty {
   <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
     <div class="spinner-grow text-primary" role="status"></div>
   </div>
-
+  
   <!-- Checkout Page Content -->
   <div class="container-fluid py-5 ">
     <div class="container py-5 checkout-container">
       <h1 class="mb-4">Billing details</h1>
+      <a href="index.html" class="back-home-btn text-decoration-none text-center ">Back to Home</a>
       <form id="billing-form">
         <div class="row g-5">
           <!-- Checkout Form Section -->
