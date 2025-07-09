@@ -21,7 +21,7 @@ const TodoList = ({ todos, onEdit, onDelete, onToggleComplete }) => {
      
 
       <Container>
-        <div className="todo-grid">
+        <div className="todo-grid  ">
           <AnimatePresence>
             {todos.length === 0 ? (
               <motion.div
@@ -36,7 +36,7 @@ const TodoList = ({ todos, onEdit, onDelete, onToggleComplete }) => {
                     alt="No tasks" 
                     style={{ width: '120px', opacity: 0.7, marginBottom: '1rem' }}
                   />
-                  <h5 className="text-muted">No todos found</h5>
+                  <h5 className="text-muted ">No todos found</h5>
                   <p className="text-muted">Add a new task to get started!</p>
                 </div>
               </motion.div>
