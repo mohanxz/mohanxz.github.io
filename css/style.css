@@ -4,7 +4,7 @@ body.dark {
     --color-body: #ffffff;
     --color-heading:#eef3db;
 
-    --color-base: #0c0a45;
+    --color-base: #09122C;
     --color-base2: #000000;
     --color-brand:#e0f780;
     --color-brand2:#00491e;
@@ -18,7 +18,7 @@ body.light {
 
     --color-base:#f5e5ff;
     --color-base2: #ffffff;
-    --color-brand:#00a6ff ;
+    --color-brand:#0098e9 ;
     --color-brand2:#fc4552 ;
     --sidbar-width: 240px;
     --font-base: "Bai Jamjuree", sans-serif;
