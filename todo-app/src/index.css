@@ -1,0 +1,116 @@
+:root {
+  --primary-color: #0029de;
+  --secondary-color: #3f37c9;
+  --light-bg: #f8f9fa;
+  --dark-bg: #212529;
+  --text-light: #f8f9fa;
+  --text-dark: #212529;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.light-mode {
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+}
+
+.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+}
+
+.app-container {
+  min-height: 100vh;
+}
+
+.todo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.completed {
+  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.completed .card-title {
+  color: #6c757d !important;
+}
+
+.navbar {
+  transition: all var(--transition-speed);
+}
+
+.card {
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  border: none;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  width: 200px;
+  height: 40px;
+  
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn var(--transition-speed);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .todo-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width:480px){
+  .btn-primary{
+    margin-right: 10px;
+  }
+}
